@@ -46,7 +46,9 @@ class DestinationIndex extends React.Component{
               <ul>
               { this.state.destinations.map( destination => { return(
                 <li key={destination.id}> 
-                  <img src={destination.image} className="index-page"/>
+                  <Link to={`/destinations/${destination.id}`}>
+                    <img src={destination.image} className="index-page"/>
+                  </Link>
                     <br />
                   <h2>{destination.name}</h2>
                 </li>

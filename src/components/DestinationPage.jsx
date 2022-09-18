@@ -31,7 +31,7 @@ class DestinationPage extends React.Component {
     }
 
     componentDidMount(){
-        this.getAttractions(92)
+        this.getAttractions(this.props.match.params.id)
     }
 
     render(){
@@ -53,16 +53,13 @@ class DestinationPage extends React.Component {
                 </ul>
 
                 <h2>What's happening here</h2>
-                    {
-                        this.state.attractions.forEach( (attraction) => (
-                            this.state.allEvents.push(attraction.events)
-                        ))
-                    }
-                    {
-                        this.state.allEvents.map( (event) => (
-                            <p>{event.name}</p>
-                        ))
-                    }
+                    <ul>
+                        {
+                            this.state.allEvents.map( (event) => (
+                                <li>{event.name}</li>
+                            ))
+                        }
+                    </ul>
                     
 
             </div>
