@@ -5,6 +5,7 @@ import axios from 'axios';
 import {Route, Link, HashRouter as Router} from 'react-router-dom'
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
+import DestinationPage from './components/DestinationPage';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -88,6 +89,8 @@ class App extends React.Component{
         </header>
 
         <Route exact path='/my_profile' component={MyProfile} />
+        <Route exact path='/destinations/:id' component={DestinationPage} />
+
         <Route 
           exact path='/login'
           render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>} // Ask Luke & Kris what's this?
