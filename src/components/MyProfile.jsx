@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import UserPage from './UserPage';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -32,7 +34,7 @@ class MyProfile extends React.Component {
             <div>
                 <h1>Helloo {this.state.currentUser.name}</h1>
                 <h3>Your email is {this.state.currentUser.email}</h3>
-
+                <UserPage />
             </div>
         )
 

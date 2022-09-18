@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import axios from 'axios';
@@ -6,6 +6,8 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import UserPage from './components/UserPage';
+import DestinationIndex from './components/DestinationIndex';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -14,7 +16,7 @@ class App extends React.Component {
   // App state
   state = {
     currentUser: undefined,
-    destinations: [],
+    // destinations: [],
     loading: true,
     error: null
   }
@@ -23,7 +25,7 @@ class App extends React.Component {
   componentDidMount() {
     // this function will load once you load the website. We want to check if the user is logged in when we visit so we'll pass in the setCurrentUser function
     this.setCurrentUser()
-    this.fetchDestinations()
+    // this.fetchDestinations()
   }
 
   // function to set the state to the current logged in user
@@ -58,21 +60,21 @@ class App extends React.Component {
     axios.defaults.headers.common['Authorization'] = undefined;
   }
 
-  fetchDestinations = async () => {
-    try{
-      const res = await axios.get(`${BASE_URL}/destinations`);
-      console.log('response:', res.data)
+  // fetchDestinations = async () => {
+  //   try{
+  //     const res = await axios.get(`${BASE_URL}/destinations`);
+  //     // console.log('response:', res.data)
       
-      this.setState({
-        destinations: res.data,
-        loading: false
-      })
+  //     this.setState({
+  //       destinations: res.data,
+  //       loading: false
+  //     })
 
 
-    } catch (err) {
-      console.error('Error loading from API', err);
-    }
-  } // fetchDestinations()
+  //   } catch (err) {
+  //     console.error('Error loading from API', err);
+  //   }
+  // } // fetchDestinations()
 
   // This is where all our HTML goes
 
@@ -105,24 +107,6 @@ class App extends React.Component {
           </nav>
 
 
-          <div>
-            <h1> desPination</h1>
-            <h3> Major destinations to explore </h3>
-            {
-              this.state.loading
-              ?
-              <p> Loading...</p>
-              :
-              <ul>
-              { this.state.destinations.map( d => { return(
-                <li key={d.id}> 
-                  {d.name}
-                  <img src={d.image}/>
-                </li>
-              ) })}
-              </ul>
-            }
-          </div>
 
 
 
@@ -133,7 +117,28 @@ class App extends React.Component {
           exact path='/login'
           render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props} />} // Ask Luke & Kris what's this?
         />
-
+        <Route exact path='/users/:id' component={UserPage} />
+        <Route exact path='/destinations' component={DestinationIndex} />
+        
+          {/* <div>
+            <h1> des<em>Pin</em>ation</h1>
+            <h3> Major destinations to explore </h3>
+            {
+              this.state.loading
+              ?
+              <p> Loading...</p>
+              :
+              <ul>
+              { this.state.destinations.map( destination => { return(
+                <li key={destination.id}> 
+                  <img src={destination.image} className="index-page"/>
+                    <br />
+                  <h2>{destination.name}</h2>
+                </li>
+              ) })}
+              </ul>
+            }
+          </div> */}
       </Router>
     )
 
