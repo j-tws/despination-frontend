@@ -13,7 +13,7 @@ class UserPage extends React.Component{
     }
 
     componentDidMount(){
-        this.fetchUser(7)
+        this.fetchUser()
     }
 
     fetchUser = async (userID) => {

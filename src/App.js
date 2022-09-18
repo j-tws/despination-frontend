@@ -36,6 +36,12 @@ class App extends React.Component {
   // We pass through this token as an authenticator header which let our server validate us.
   // If our token is valid then we set the state to our current user. If not you'll see a warning in your console that you're unauthorized
   setCurrentUser = () => {
+    let tokenUnavailable = !localStorage.getItem("jwt")
+    if (tokenUnavailable) {
+      console.log("No token in local storage")
+      return
+      // prevents calling the axios get if there is no token to validate with
+    }
     let token = "Bearer " + localStorage.getItem("jwt");
     axios.get(`${BASE_URL}/users/current`, {
       headers: {
