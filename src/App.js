@@ -1,27 +1,31 @@
 import logo from './logo.svg';
-import React from 'react'
+import React from 'react';
 import './App.css';
 import axios from 'axios';
-import {Route, Link, HashRouter as Router} from 'react-router-dom'
+import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 const BASE_URL = 'http://localhost:3000'
 
-class App extends React.Component{
+class App extends React.Component {
 
   // App state
-  state ={
-    currentUser: undefined
+  state = {
+    currentUser: undefined,
+    destinations: [],
+    loading: true,
+    error: null
   }
 
   // function to run on component mounting
-  componentDidMount(){
-
+  componentDidMount() {
     // this function will load once you load the website. We want to check if the user is logged in when we visit so we'll pass in the setCurrentUser function
-    this.setCurrentUser() 
+    this.setCurrentUser()
+    this.fetchDestinations()
   }
-  
+
   // function to set the state to the current logged in user
   // This is the function to get the current user from your database if there is one.
   // We declare that there is a token which holds a json web token 'jwt' from your local storage.
@@ -35,10 +39,10 @@ class App extends React.Component{
         'Authorization': token
       }
     })
-    .then( res => {
-      this.setState({currentUser: res.data})
-    })
-    .catch(err => console.warn(err))
+      .then(res => {
+        this.setState({ currentUser: res.data })
+      })
+      .catch(err => console.warn(err))
   }
 
   // function to log the user out
@@ -49,30 +53,45 @@ class App extends React.Component{
 
   // This will completely reset our logged in state
   handleLogout = () => {
-    this.setState({currentUser: undefined})
+    this.setState({ currentUser: undefined })
     localStorage.removeItem("jwt");
     axios.defaults.headers.common['Authorization'] = undefined;
   }
 
+  fetchDestinations = async () => {
+    try{
+      const res = await axios.get(`${BASE_URL}/destinations`);
+      console.log('response:', res.data)
+      
+      this.setState({
+        destinations: res.data,
+        loading: false
+      })
+
+
+    } catch (err) {
+      console.error('Error loading from API', err);
+    }
+  } // fetchDestinations()
 
   // This is where all our HTML goes
 
   // This is something like to notify whether a user is logged in or not (mostly at the home page), or a display text saying "Welcome, username"
-  render(){
+  render() {
 
     return (
       <Router>
         <header>
           <nav>
             {/* Show one of two nav bars depending on if the user is logged in */}
-              {
-                this.state.currentUser !== undefined
+            {
+              this.state.currentUser !== undefined
                 ?
                 (
                   <ul>
                     <li>Welcome {this.state.currentUser.name} | </li>
                     <li><Link to='/my_profile'>My Profile</Link></li>
-                    <li><Link onClick={this.handleLogout} to ='/'>Logout</Link></li>
+                    <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
                   </ul>
                 )
                 :
@@ -81,16 +100,38 @@ class App extends React.Component{
                     <li><Link to='/login'>Login</Link></li>
                   </ul>
                 )
-              }
+            }
 
           </nav>
-    
+
+
+          <div>
+            <h1> desPination</h1>
+            <h3> Major destinations to explore </h3>
+            {
+              this.state.loading
+              ?
+              <p> Loading...</p>
+              :
+              <ul>
+              { this.state.destinations.map( d => { return(
+                <li key={d.id}> 
+                  {d.name}
+                  <img src={d.image}/>
+                </li>
+              ) })}
+              </ul>
+            }
+          </div>
+
+
+
         </header>
 
         <Route exact path='/my_profile' component={MyProfile} />
-        <Route 
+        <Route
           exact path='/login'
-          render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>} // Ask Luke & Kris what's this?
+          render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props} />} // Ask Luke & Kris what's this?
         />
 
       </Router>
