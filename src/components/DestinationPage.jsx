@@ -54,7 +54,6 @@ class DestinationPage extends React.Component {
 
                 <h2>What's happening here</h2>
                     {
-
                         this.state.attractions.forEach( (attraction) => (
                             this.state.allEvents.push(attraction.events)
                         ))
