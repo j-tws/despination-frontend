@@ -1,4 +1,24 @@
-.App {
+.index-page{
+  width: 30%;
+}
+
+
+ul{
+   list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +55,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
