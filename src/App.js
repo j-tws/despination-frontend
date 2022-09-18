@@ -36,6 +36,7 @@ class App extends React.Component {
   // We pass through this token as an authenticator header which let our server validate us.
   // If our token is valid then we set the state to our current user. If not you'll see a warning in your console that you're unauthorized
   setCurrentUser = () => {
+    console.log( "localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
     let token = "Bearer " + localStorage.getItem("jwt");
     axios.get(`${BASE_URL}/users/current`, {
       headers: {
