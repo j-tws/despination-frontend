@@ -43,7 +43,7 @@ class UserPage extends React.Component{
                     <div>
                         {this.state.planners.map(planner => { return(
                             <div key={planner.id}>
-                                <Link to= "/">
+                                <Link to= "/planner">
                                 <img src={planner.image} />
                                 </Link>
                                 <br />
