@@ -11,7 +11,8 @@ class MyProfile extends React.Component {
     state = {
         currentUser: {
             name: '',
-            email: ''
+            email: '',
+            id: ''
         },
         planners: [],
         loading: true,
@@ -20,26 +21,41 @@ class MyProfile extends React.Component {
 
     componentDidMount(){
         let token = "Bearer " + localStorage.getItem("jwt")
+        console.log(token)
+        console.log('result token')
         axios.get(`${BASE_URL}/users/current`, {
             headers: {
                 'Authorization': token
             }
         })
+        
         .then(res => {
-            this.setState({currentUser: res.data})
+            console.log(`data:`,res.data)
+            this.setState({currentUser: res.data}, () => this.fetchUser(this.state.currentUser.id)) 
+            //call back function to be run after setState operation completes becasue setState is async
         })
         .catch(err => console.warn(err))
-        this.fetchUser()
+        
     }
 
     fetchUser = async (userID) => {
+        console.log(userID);
+        let token = "Bearer " + localStorage.getItem("jwt")
         try{
-            const res = await axios.get(`${BASE_URL}/users/${userID}`);
-            console.log('response:', res.data)
+            const res = await axios.get(
+                `${BASE_URL}/users/${userID}`, 
+                {
+                    headers: {
+                        'Authorization': token
+                    }
+                }
+            );
+            
             this.setState({
                 loading: false,
-                planners: res.data.planners
+                planners: res.data.planners,
             })
+            console.log('res.data results',res.data )
 
         } catch (err){
             console.error('Error loading from API', err)
