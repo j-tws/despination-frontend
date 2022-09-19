@@ -52,41 +52,42 @@ class PlannerPage extends React.Component {
 
         return (
             <div>
-                <h2> Planner! </h2>
-                <div>
+                <div className="planning-heading">
+                    <h2> {this.state.planner.name} </h2>
+                    <p> last update: {this.state.planner.updated_at} </p>
+                </div>
+                <ul>
                     <h2>Attractions</h2>
                         {this.state.attractions.map(attraction => { return(
-                            <div key={attraction.id}>
-                                <Link to= "/attraction">
-                                <img src={attraction.image} className="show-page"/>
+                            <li key={attraction.id} className="attracts-list">
+                                <Link to={`/attractions/${attraction.id}`}>
+                                <img src={attraction.image} className="attracts-events-img"/>
                                 </Link>
                                 <br />
                                 <h3>{attraction.name}</h3>
                                 <p>{attraction.address}</p>
-                                <p>{attraction.description}</p>
                                 
-                            </div>
+                            </li>
 
                         )})}
-                </div>
-                <div>
-                    <h2> Events </h2>
-                    {this.state.events.map(events => { return(
-                        <div key={events.id}>
-                            <Link to= "/events">
-                            <img src={events.image} className="show-page"/>
-                            </Link>
-                            <br />
-                            <h3>{events.name}</h3>
-                            <p>{events.location}</p>
-                            <p>{events.description}</p>
-                            <p>{events.time}</p>
-                            
-                        </div>
+                </ul>
+                
+                <ul>
+                    <h2> What's the buzz in town! </h2>
+                        {this.state.events.map(events => { return(
+                            <li key={events.id} className="events-list">
+                                <img src={events.image} className="attracts-events-img"/>
+                                <br />
+                                <h3>{events.name}</h3>
+                                <p>{events.location}</p>
+                                <p>{events.description}</p>
+                                <p>{events.time}</p>
+                                
+                            </li>
 
-                    )})}
-
-                </div>
+                        )})}
+                </ul>
+            
 
 
             </div>

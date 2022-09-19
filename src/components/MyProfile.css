@@ -1,0 +1,10 @@
+.profile-img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.profile-list {
+    display: inline-block;
+    margin: 0 10px;
+}

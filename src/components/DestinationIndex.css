@@ -1,0 +1,15 @@
+
+.destination-heading {
+    text-align: center;
+}
+
+.destination-img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.destination-list {
+    display: inline-block;
+    margin: 0 10px;
+}

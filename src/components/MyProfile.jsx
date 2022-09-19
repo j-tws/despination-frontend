@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
-
+import './MyProfile.css';
 
 
 
@@ -69,22 +69,22 @@ class MyProfile extends React.Component {
 
         return (
             <div>
-                <h1>Helloo {this.state.currentUser.name}</h1>
-                <h3>Your email is {this.state.currentUser.email}</h3>
+                <h1>Welcome back, {this.state.currentUser.name}!</h1>
+                {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
 
-                    <div>
+                    <ul className='profile-list'>
                         {this.state.planners.map(planner => { return(
-                            <div key={planner.id}>
+                            <li key={planner.id}>
                                 <Link to= {`/planners/${planner.id}`}>
-                                <img src={planner.image} />
+                                <img src={planner.image} className="profile-img" alt={planner.name} />
                                 </Link>
                                 <br />
-                                <h2>{planner.name}</h2>
+                                <h3>{planner.name}</h3>
                                 
-                            </div>
+                            </li>
 
                         )})}
-                    </div>
+                    </ul>
 
             </div>
 

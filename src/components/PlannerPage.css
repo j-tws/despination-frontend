@@ -1,9 +1,25 @@
-.show-page{
-  width: 30%;
+
+.planning-heading {
+    text-align: center;
 }
 
+.attracts-events-img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+}
 
-ul{
-   list-style-type: none;
+.attracts-list {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.events-list {
+  display: inline-block;
+  margin: 0 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 24%;
+  text-align: justify;
 }
 
