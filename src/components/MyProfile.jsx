@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 
 
+
+
 const BASE_URL = 'http://localhost:3000'
 
 // Component to show details about the user.
@@ -70,18 +72,10 @@ class MyProfile extends React.Component {
                 <h1>Helloo {this.state.currentUser.name}</h1>
                 <h3>Your email is {this.state.currentUser.email}</h3>
 
-                <div>
-                {
-                    this.state.loading
-                    ?
-                    <p>
-                    Loading.....
-                    </p>
-                    :
                     <div>
                         {this.state.planners.map(planner => { return(
                             <div key={planner.id}>
-                                <Link to= "/">
+                                <Link to= {`/planners/${planner.id}`}>
                                 <img src={planner.image} />
                                 </Link>
                                 <br />
@@ -91,11 +85,6 @@ class MyProfile extends React.Component {
 
                         )})}
                     </div>
-                }
-
-            </div>
-
-
 
             </div>
 
