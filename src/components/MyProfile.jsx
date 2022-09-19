@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
-import UserPage from './UserPage';
+
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -12,7 +12,10 @@ class MyProfile extends React.Component {
         currentUser: {
             name: '',
             email: ''
-        }
+        },
+        planners: [],
+        loading: true,
+        error: null
     }
 
     componentDidMount(){
@@ -26,7 +29,23 @@ class MyProfile extends React.Component {
             this.setState({currentUser: res.data})
         })
         .catch(err => console.warn(err))
+        this.fetchUser()
     }
+
+    fetchUser = async (userID) => {
+        try{
+            const res = await axios.get(`${BASE_URL}/users/${userID}`);
+            console.log('response:', res.data)
+            this.setState({
+                loading: false,
+                planners: res.data.planners
+            })
+
+        } catch (err){
+            console.error('Error loading from API', err)
+        }
+    }
+
 
     render() {
 
@@ -34,8 +53,36 @@ class MyProfile extends React.Component {
             <div>
                 <h1>Helloo {this.state.currentUser.name}</h1>
                 <h3>Your email is {this.state.currentUser.email}</h3>
-                <UserPage />
+
+                <div>
+                {
+                    this.state.loading
+                    ?
+                    <p>
+                    Loading.....
+                    </p>
+                    :
+                    <div>
+                        {this.state.planners.map(planner => { return(
+                            <div key={planner.id}>
+                                <Link to= "/">
+                                <img src={planner.image} />
+                                </Link>
+                                <br />
+                                <h2>{planner.name}</h2>
+                                
+                            </div>
+
+                        )})}
+                    </div>
+                }
+
             </div>
+
+
+
+            </div>
+
         )
 
     }

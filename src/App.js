@@ -7,7 +7,6 @@ import Login from './components/Login';
 import MyProfile from './components/MyProfile';
 import DestinationPage from './components/DestinationPage';
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
-import UserPage from './components/UserPage';
 import DestinationIndex from './components/DestinationIndex';
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
@@ -94,10 +93,6 @@ class App extends React.Component {
 
           </nav>
 
-
-
-
-
         </header>
 
         
@@ -109,7 +104,7 @@ class App extends React.Component {
         />
         <Route 
           exact path='/profile'
-          render={(props) => <UserPage user={this.state.currentUser} {...props} />}
+          render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
         /> 
         <Route exact path='/destinations' component={DestinationIndex} />
 

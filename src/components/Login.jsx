@@ -39,7 +39,7 @@ class Login extends React.Component {
         .then( result => {
             localStorage.setItem("jwt", result.data.jwt)
             this.props.setCurrentUser()
-            this.props.history.push('/profile')
+            this.props.history.push('/my_profile')
 
             console.log(result.data);
             console.log(result.data.jwt);
