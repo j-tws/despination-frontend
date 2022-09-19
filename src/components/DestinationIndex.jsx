@@ -22,6 +22,7 @@ class DestinationIndex extends React.Component{
       const res = await axios.get(`${BASE_URL}/destinations`);
       // console.log('response:', res.data)
       
+      console.log('destination data', res.data)
       this.setState({
         destinations: res.data,
         loading: false
