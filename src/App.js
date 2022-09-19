@@ -9,6 +9,7 @@ import DestinationPage from './components/DestinationPage';
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 import DestinationIndex from './components/DestinationIndex';
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
+import AttractionPage from './components/AttractionPage';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -108,6 +109,8 @@ class App extends React.Component {
         <Route exact path='/destinations' component={DestinationIndex} />
 
         <Route exact path='/destinations/:id' component={DestinationPage} />
+
+        <Route exact path='/attractions/:id' component={AttractionPage} />
         
       </Router>
     )

@@ -6,3 +6,13 @@
 .destination-page {
     text-align: center;
 }
+
+.attraction-img {
+    width: 400px;
+    height: 250px;
+}
+
+.attraction-list {
+    display: inline-block;
+    margin: 0 10px;
+}

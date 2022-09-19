@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import { Route, HashRouter as Router, Link } from 'react-router-dom';
 
 const BASE_URL = 'http://localhost:3000'
 
