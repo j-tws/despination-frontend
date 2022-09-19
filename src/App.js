@@ -9,6 +9,7 @@ import DestinationPage from './components/DestinationPage';
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 import UserPage from './components/UserPage';
 import DestinationIndex from './components/DestinationIndex';
+import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -26,7 +27,7 @@ class App extends React.Component {
   componentDidMount() {
     // this function will load once you load the website. We want to check if the user is logged in when we visit so we'll pass in the setCurrentUser function
     this.setCurrentUser()
-    // this.fetchDestinations()
+   
   }
 
   // function to set the state to the current logged in user
@@ -38,6 +39,7 @@ class App extends React.Component {
   setCurrentUser = () => {
     console.log( "localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
     let token = "Bearer " + localStorage.getItem("jwt");
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     axios.get(`${BASE_URL}/users/current`, {
       headers: {
         'Authorization': token
@@ -62,22 +64,6 @@ class App extends React.Component {
     axios.defaults.headers.common['Authorization'] = undefined;
   }
 
-  // fetchDestinations = async () => {
-  //   try{
-  //     const res = await axios.get(`${BASE_URL}/destinations`);
-  //     // console.log('response:', res.data)
-      
-  //     this.setState({
-  //       destinations: res.data,
-  //       loading: false
-  //     })
-
-
-  //   } catch (err) {
-  //     console.error('Error loading from API', err);
-  //   }
-  // } // fetchDestinations()
-
   // This is where all our HTML goes
 
   // This is something like to notify whether a user is logged in or not (mostly at the home page), or a display text saying "Welcome, username"
@@ -89,12 +75,12 @@ class App extends React.Component {
           <nav>
             {/* Show one of two nav bars depending on if the user is logged in */}
             {
-              this.state.currentUser !== undefined
+              this.state.currentUser 
                 ?
                 (
                   <ul>
                     <li>Welcome {this.state.currentUser.name} | </li>
-                    <li><Link to='/my_profile'>My Profile</Link></li>
+                    <li><Link to='/profile'>My Profile</Link></li>
                     <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
                   </ul>
                 )
@@ -114,35 +100,19 @@ class App extends React.Component {
 
         </header>
 
-        <Route exact path='/my_profile' component={MyProfile} />
+        
         <Route exact path='/destinations/:id' component={DestinationPage} />
 
         <Route
           exact path='/login'
-          render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props} />} // Ask Luke & Kris what's this?
+          render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
         />
-        <Route exact path='/users/:id' component={UserPage} />
+        <Route 
+          exact path='/profile'
+          render={(props) => <UserPage user={this.state.currentUser} {...props} />}
+        /> 
         <Route exact path='/destinations' component={DestinationIndex} />
-        
-          {/* <div>
-            <h1> des<em>Pin</em>ation</h1>
-            <h3> Major destinations to explore </h3>
-            {
-              this.state.loading
-              ?
-              <p> Loading...</p>
-              :
-              <ul>
-              { this.state.destinations.map( destination => { return(
-                <li key={destination.id}> 
-                  <img src={destination.image} className="index-page"/>
-                    <br />
-                  <h2>{destination.name}</h2>
-                </li>
-              ) })}
-              </ul>
-            }
-          </div> */}
+
       </Router>
     )
 
@@ -150,26 +120,5 @@ class App extends React.Component {
 
 }
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

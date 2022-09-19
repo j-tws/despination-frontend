@@ -38,9 +38,8 @@ class Login extends React.Component {
         axios.post(`${BASE_URL}/user_token`, {auth: request})
         .then( result => {
             localStorage.setItem("jwt", result.data.jwt)
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.jwt 
             this.props.setCurrentUser()
-            this.props.history.push('/my_profile')
+            this.props.history.push('/profile')
 
             console.log(result.data);
             console.log(result.data.jwt);
