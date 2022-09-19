@@ -10,11 +10,29 @@ class AttractionPage extends React.Component {
   state = {
     attraction: {},
     attractionEvents: [],
+    currentUser: null,
     loading: true,
     error: null
   }
 
   componentDidMount(){
+
+    let token = "Bearer " + localStorage.getItem("jwt")
+      console.log(token)
+      console.log('result token')
+      axios.get(`${BASE_URL}/users/current`, {
+          headers: {
+              'Authorization': token
+          }
+      })
+      .then(res => {
+        console.log(`data:`,res.data)
+        this.setState({currentUser: res.data}) 
+        //call back function to be run after setState operation completes becasue setState is async
+      })
+      .catch(err => console.warn(err))
+
+
     this.getAttractionDetails(this.props.match.params.id)
   }
 
@@ -33,7 +51,6 @@ class AttractionPage extends React.Component {
       this.setState({ error: err })
     }
 
-
   }
 
   render(){
@@ -41,8 +58,11 @@ class AttractionPage extends React.Component {
     return(
       <div className="attraction-page">
         <h2>{this.state.attraction.name}</h2>
+
         <img className="attraction-main-img" src={this.state.attraction.image} alt={this.state.attraction.name} />
+
         <p className="attraction-description">{this.state.attraction.description}</p>
+
         <p><strong>Address:</strong>{this.state.attraction.address}</p>
 
         <div>
