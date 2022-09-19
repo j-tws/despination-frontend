@@ -96,7 +96,6 @@ class App extends React.Component {
         </header>
 
         
-        <Route exact path='/destinations/:id' component={DestinationPage} />
 
         <Route
           exact path='/login'
@@ -108,6 +107,8 @@ class App extends React.Component {
         /> 
         <Route exact path='/destinations' component={DestinationIndex} />
 
+        <Route exact path='/destinations/:id' component={DestinationPage} />
+        
       </Router>
     )
 

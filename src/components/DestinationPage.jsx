@@ -9,7 +9,9 @@ class DestinationPage extends React.Component {
 
     state = {
         destination: {},
-        attractions: [],
+        historicalAttractions: [],
+        natureAttractions: [],
+        eateryAttractions: [],
         allEvents: [],
         loading: true,
         error: null,
@@ -19,10 +21,14 @@ class DestinationPage extends React.Component {
         axios.get(`${BASE_URL}/destinations/${id}`)
         .then( res => {
             // console.log('destination data:', res.data);
-            console.log('destination attractions:', res.data.attractions);
-            this.setState({destination: res.data})
-            this.setState({attractions: res.data.attractions})
-            this.setState({allEvents: res.data.events})
+            // console.log('destinations details:', res.data.destination);
+            // console.log('attraction categories:', res.data.attraction_categories);
+            console.log('historical categories:', res.data.attraction_categories.Historical);
+            this.setState({destination: res.data.destination})
+            this.setState({historicalAttractions: res.data.attraction_categories.Historical})
+            this.setState({natureAttractions: res.data.attraction_categories.Nature})
+            this.setState({eateryAttractions: res.data.attraction_categories.Eatery})
+            
 
         })
         .catch( err => {
@@ -43,13 +49,33 @@ class DestinationPage extends React.Component {
                 <p>{this.state.destination.description}</p>
 
                 <h2>Attractions</h2>
+                <h3>Historical and Cultural</h3>
                 <ul>
                     {
-                        this.state.attractions.map( (attraction) => (
+                        this.state.historicalAttractions.map( (attraction) => (
+                            <img src={attraction.image} alt={attraction.name} />,
                             <li>{attraction.name}</li>
                         ))
                     }
+                </ul>
 
+                <h3>Landscape and Nature</h3>
+                <ul>
+                    {
+                        this.state.natureAttractions.map( (attraction) => (
+                            <li>{attraction.name}</li>
+                        ))
+                    }
+                </ul>
+
+                <h3>Eateries</h3>
+                <ul>
+                    {
+                        this.state.eateryAttractions.map( (attraction) => (
+                            <img src={attraction.image} alt={attraction.name} />,
+                            <li>{attraction.name}</li>
+                        ))
+                    }
                 </ul>
 
                 <h2>What's happening here</h2>
