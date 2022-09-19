@@ -96,7 +96,7 @@ class DestinationPage extends React.Component {
             }
           </ul>
 
-          <h2>What's happening here</h2>
+          <h2>All events happening in this city</h2>
             <ul>
               {
                 this.state.allEvents.map( (event) => (

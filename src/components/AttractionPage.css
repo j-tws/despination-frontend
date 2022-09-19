@@ -1,0 +1,15 @@
+.attraction-page {
+    text-align: center;
+}
+
+.attraction-main-img {
+    width: 900px;
+    height: 450px;
+    object-fit: cover;
+}
+
+.attraction-description {
+    width: 900px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
