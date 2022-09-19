@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import './AttractionPage.css'
+import AddAttractionForm from './AddAttractionForm';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -10,7 +11,10 @@ class AttractionPage extends React.Component {
   state = {
     attraction: {},
     attractionEvents: [],
+
     currentUser: null,
+    currentUserPlanners: [],
+
     loading: true,
     error: null
   }
@@ -27,11 +31,14 @@ class AttractionPage extends React.Component {
       })
       .then(res => {
         console.log(`data:`,res.data)
+        console.log(`currentUserPlanners:`, res.data.planners)
+
         this.setState({currentUser: res.data}) 
         //call back function to be run after setState operation completes becasue setState is async
+        this.setState({currentUserPlanners: res.data.planners})
+
       })
       .catch(err => console.warn(err))
-
 
     this.getAttractionDetails(this.props.match.params.id)
   }
@@ -43,6 +50,7 @@ class AttractionPage extends React.Component {
 
       console.log('response data:', res.data );
       console.log('attraction events:', res.data.events);
+
       this.setState({attraction: res.data})
       this.setState({attractionEvents: res.data.events})
 
@@ -52,6 +60,15 @@ class AttractionPage extends React.Component {
     }
 
   }
+
+  postAttraction = async (plannerId, attraction) => {
+    console.log('Post attraction to planner:', plannerId, attraction)
+
+    const res = await axios.post(`${BASE_URL}/planners/${plannerId}`, {attractions: attraction})
+
+    console.log(`Post response:`, res.data);
+
+  } 
 
   render(){
       
@@ -64,6 +81,12 @@ class AttractionPage extends React.Component {
         <p className="attraction-description">{this.state.attraction.description}</p>
 
         <p><strong>Address:</strong>{this.state.attraction.address}</p>
+
+        <AddAttractionForm 
+          userPlanners={this.state.currentUserPlanners} 
+          receivePlannerId={this.postAttraction} 
+          currentAttraction={this.state.attraction}
+        />
 
         <div>
         {
@@ -93,9 +116,9 @@ class AttractionPage extends React.Component {
         </div>
 
       </div>
-    )
-  }
+    ) //return()
+  } //render()
 
-}
+} //class
 
 export default AttractionPage
