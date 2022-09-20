@@ -11,6 +11,7 @@ import DestinationIndex from './components/DestinationIndex';
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
+import Registration from './components/auth/Registration';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -28,7 +29,7 @@ class App extends React.Component {
   componentDidMount() {
     // this function will load once you load the website. We want to check if the user is logged in when we visit so we'll pass in the setCurrentUser function
     this.setCurrentUser()
-   
+
   }
 
   // function to set the state to the current logged in user
@@ -38,7 +39,7 @@ class App extends React.Component {
   // We pass through this token as an authenticator header which let our server validate us.
   // If our token is valid then we set the state to our current user. If not you'll see a warning in your console that you're unauthorized
   setCurrentUser = () => {
-    console.log( "localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
+    console.log("localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
     let token = "Bearer " + localStorage.getItem("jwt");
     axios.defaults.headers.common['Authorization'] = token;
     axios.get(`${BASE_URL}/users/current`)
@@ -72,7 +73,7 @@ class App extends React.Component {
           <nav>
             {/* Show one of two nav bars depending on if the user is logged in */}
             {
-              this.state.currentUser 
+              this.state.currentUser
                 ?
                 (
                   <ul>
@@ -91,25 +92,27 @@ class App extends React.Component {
 
           </nav>
 
+          <Registration />
+
         </header>
 
-        
+
 
         <Route
           exact path='/login'
           render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
         />
-        <Route 
+        <Route
           exact path='/profile'
           render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
-        /> 
+        />
         <Route exact path='/destinations' component={DestinationIndex} />
 
         <Route exact path='/destinations/:id' component={DestinationPage} />
 
         <Route exact path='/attractions/:id' component={AttractionPage} />
         <Route exact path='/planners/:id' component={PlannerPage} />
-        
+
       </Router>
     )
 
