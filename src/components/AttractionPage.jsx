@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import './AttractionPage.css'
 import AddRemoveAttractionForm from './AddRemoveAttractionForm';
+import AddRemoveEventForm from './AddRemoveEventForm';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -44,7 +45,7 @@ class AttractionPage extends React.Component {
       .catch(err => console.warn(err))
 
     this.getAttractionDetails(this.props.match.params.id)
-  }
+  } // componentDidMount
 
   getAttractionDetails = async (id) => {
     
@@ -62,7 +63,7 @@ class AttractionPage extends React.Component {
       this.setState({ error: err })
     }
 
-  }
+  } // getAttractionDetails
 
   postAttraction = async (plannerId) => {
 
@@ -82,11 +83,11 @@ class AttractionPage extends React.Component {
 
     }
 
-  } 
+  } //postAttraction
 
   deleteAttraction = async (plannerId) => {
 
-    console.log(`info received:`, plannerId);
+    // console.log(`info received:`, plannerId);
     try {
   
       const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_attraction/${this.props.match.params.id}`)
@@ -103,7 +104,7 @@ class AttractionPage extends React.Component {
 
     }
 
-  } 
+  } //deleteAttraction
 
   render(){
       
@@ -127,7 +128,6 @@ class AttractionPage extends React.Component {
           removeAttraction={this.deleteAttraction} 
         />
         <p>{this.state.addRemoveAttractionResponse}</p>
-        <p>{this.state.addRemoveAttractionError}</p>
 
         <div>
         {
@@ -143,6 +143,7 @@ class AttractionPage extends React.Component {
                     <h3>{event.name}</h3>
                     <p><strong>{event.time}</strong></p>
                     <p>{event.description}</p>
+
                   </div>
                 ))
                 }
