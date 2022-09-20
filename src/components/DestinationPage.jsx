@@ -17,11 +17,13 @@ class DestinationPage extends React.Component {
     eateryAttractions: [],
     allEvents: [],
 
+    currentUser: null,
+    currentUserPlanners: [],
+
     loading: true,
     error: null,
 
     addRemoveEventResponse: '',
-    addRemoveEventError: '',
 
   }
 
@@ -47,6 +49,22 @@ class DestinationPage extends React.Component {
   }
 
   componentDidMount(){
+
+    let token = "Bearer " + localStorage.getItem("jwt")
+
+      axios.get(`${BASE_URL}/users/current`, {
+          headers: {
+              'Authorization': token
+          }
+      })
+      .then(res => {
+
+        this.setState({currentUser: res.data}) 
+        this.setState({currentUserPlanners: res.data.planners})
+
+      })
+      .catch(err => console.warn(err))
+
     this.getAttractions(this.props.match.params.id)
   }
 
@@ -72,11 +90,17 @@ class DestinationPage extends React.Component {
   deleteEvent = async (plannerId, eventId) => {
 
     console.log(`info received:`, plannerId);
-    // try {
+    try {
 
-    //   const res = await axios.post(`${BASE_URL}/planners/${plannerId}/remove_event/${eventId}`)
+      const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_event/${eventId}`)
+      // console.log(`Delete response:`, res.data);
 
-    // }
+      this.setState({addRemoveEventResponse: res.data.response})
+
+    } catch( err ){
+      // console.log('error message:', err);
+      this.setState({addRemoveEventResponse: err.response.data.error})
+    }
 
 
   } // deleteEvent
@@ -145,14 +169,27 @@ class DestinationPage extends React.Component {
                   <p><strong>{event.time}</strong></p>
                   <p>{event.description}</p>
 
-                  <AddRemoveEventForm 
-                    userPlanners={this.props.user.planners}
-                    eventId = {event.id}
-                    addEvent={this.postEvent}
-                    removeEvent={this.deleteEvent}
-                
-                  />
-                  <p>{this.state.addRemoveEventResponse}</p>
+                  {
+                    this.state.currentUser !== null
+                      ?
+                      (
+                        <div>
+                          <AddRemoveEventForm 
+                            // userPlanners={this.props.user.planners}
+                            userPlanners={this.state.currentUserPlanners} 
+                            eventId = {event.id}
+                            addEvent={this.postEvent}
+                            removeEvent={this.deleteEvent}
+                        
+                          />
+                          <p>{this.state.addRemoveEventResponse}</p>
+                        </div>
+                      )
+                      :
+                      (
+                        <div></div>
+                      )
+                  }
 
                 </div>
               ))

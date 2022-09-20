@@ -20,7 +20,8 @@ class AttractionPage extends React.Component {
     error: null,
 
     addRemoveAttractionResponse: '',
-    addRemoveAttractionError: '',
+    addRemoveEventResponse: '',
+
   }
 
   componentDidMount(){
@@ -91,20 +92,56 @@ class AttractionPage extends React.Component {
     try {
   
       const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_attraction/${this.props.match.params.id}`)
-      console.log(`Delete response:`, res.data);
+      // console.log(`Delete response:`, res.data);
 
       this.setState({addRemoveAttractionResponse: res.data.response})
       
     } catch( err ){
 
       // console.log('error message:', err);
-      console.log('error message:', err.response.data.error);
+      // console.log('error message:', err.response.data.error);
       
       this.setState({addRemoveAttractionResponse: err.response.data.error})
 
     }
 
   } //deleteAttraction
+
+  postEvent = async (plannerId, eventId) => {
+
+    // console.log(`info received:`, plannerId, eventId);
+    try {
+
+      const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_event/${eventId}`)
+      // console.log(`Post response:`, res.data);
+
+      this.setState({addRemoveEventResponse: res.data.response})
+
+    } catch( err ){
+
+      // console.log('error message:', err);
+      this.setState({addRemoveEventResponse: err.response.data.error})
+
+    }
+
+  } // postEvent
+
+  deleteEvent = async (plannerId, eventId) => {
+
+    console.log(`info received:`, plannerId);
+    try {
+
+      const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_event/${eventId}`)
+      // console.log(`Delete response:`, res.data);
+
+      this.setState({addRemoveEventResponse: res.data.response})
+
+    } catch( err ){
+      // console.log('error message:', err);
+      this.setState({addRemoveEventResponse: err.response.data.error})
+    }
+
+  } // deleteEvent
 
   render(){
       
@@ -122,12 +159,24 @@ class AttractionPage extends React.Component {
 
         <p><strong>Address:</strong>{this.state.attraction.address}</p>
 
-        <AddRemoveAttractionForm 
-          userPlanners={this.state.currentUserPlanners} 
-          addAttraction={this.postAttraction} 
-          removeAttraction={this.deleteAttraction} 
-        />
-        <p>{this.state.addRemoveAttractionResponse}</p>
+        {
+          this.state.currentUser !== null
+            ?
+            (
+              <div>
+                <AddRemoveAttractionForm 
+                  userPlanners={this.state.currentUserPlanners} 
+                  addAttraction={this.postAttraction} 
+                  removeAttraction={this.deleteAttraction} 
+                />
+                <p>{this.state.addRemoveAttractionResponse}</p>
+              </div>
+            )
+            :
+            (
+              <div></div>
+            )
+        }
 
         <div>
         {
@@ -143,6 +192,28 @@ class AttractionPage extends React.Component {
                     <h3>{event.name}</h3>
                     <p><strong>{event.time}</strong></p>
                     <p>{event.description}</p>
+
+                    {
+                    this.state.currentUser !== null
+                      ?
+                      (
+                        <div>
+                          <AddRemoveEventForm 
+                            // userPlanners={this.props.user.planners}
+                            userPlanners={this.state.currentUserPlanners} 
+                            eventId = {event.id}
+                            addEvent={this.postEvent}
+                            removeEvent={this.deleteEvent}
+                        
+                          />
+                          <p>{this.state.addRemoveEventResponse}</p>
+                        </div>
+                      )
+                      :
+                      (
+                        <div></div>
+                      )
+                  }
 
                   </div>
                 ))
