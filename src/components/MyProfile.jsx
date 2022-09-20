@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import './MyProfile.css';
+import PlannerForm from './PlannerForm';
 
 
 
@@ -16,6 +17,9 @@ class MyProfile extends React.Component {
       email: '',
       id: ''
     },
+
+    plannerFormResponse: '',
+
     planners: [],
     loading: true,
     error: null
@@ -37,7 +41,8 @@ class MyProfile extends React.Component {
       //call back function to be run after setState operation completes becasue setState is async
     })
     .catch(err => console.warn(err))
-      
+    
+    // setInterval(this.fetchUser, 1000)
   }
 
   fetchUser = async (userID) => {
@@ -64,6 +69,25 @@ class MyProfile extends React.Component {
     }
   }
 
+  postPlanner = async (name, img) => {
+    console.log(`Form almost submit!`, name, img);
+    
+    try {
+      const res = await axios.post(`${BASE_URL}/new_planner`, 
+      {name: name, image: img, user_id: this.state.currentUser.id})
+      console.log(`response:`, res.data.object);
+      this.setState({
+        plannerFormResponse: res.data.response,
+        planners: [res.data.object, ...this.state.planners]
+      
+      })
+
+
+    } catch( err ){
+      console.error(err);
+    }
+
+  }
 
   render() {
 
@@ -71,7 +95,9 @@ class MyProfile extends React.Component {
       <div>
         <h1>Welcome back, {this.state.currentUser.name}!</h1>
         {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
-        <button className="planner-create">Make new planner</button>
+
+        <PlannerForm submitForm={this.postPlanner}/>
+        <p>{this.state.plannerFormResponse}</p>
 
           <ul className='planner-list'>
             {this.state.planners.map(planner => { return(
@@ -79,7 +105,7 @@ class MyProfile extends React.Component {
                 <li key={planner.id}>
                   <Link to= {`/planners/${planner.id}`}>
                     <img src={planner.image} className="profile-img" alt={planner.name} />
-                    <h3 class="planner-name">{planner.name}</h3>
+                    <h3 className="planner-name">{planner.name}</h3>
                 
                   </Link>
                     

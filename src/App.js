@@ -13,6 +13,7 @@ import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
+import PlannerForm from './components/PlannerForm';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -110,7 +111,7 @@ class App extends React.Component {
         </header>
 
         {/* Gmap is commented out for now as it is distracting */}
-        <ReactMap />
+        {/* <ReactMap /> */}
 
         <Route
           exact path='/login'
@@ -134,6 +135,7 @@ class App extends React.Component {
         <Route exact path='/attractions/:id' component={AttractionPage} />
 
         <Route exact path='/planners/:id' component={PlannerPage} />
+
 
       </Router>
     )
