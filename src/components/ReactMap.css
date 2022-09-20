@@ -1,11 +1,13 @@
 .mapContainer {
     width: 90vw;
     height: 50vw;
+    margin: 0 auto; 
 
 }
 
 .mapTitle {
     color: green;
+    
 
 }
 

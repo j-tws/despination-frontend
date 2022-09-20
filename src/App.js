@@ -110,13 +110,13 @@ class App extends React.Component {
         </header>
 
         {/* Gmap is commented out for now as it is distracting */}
-        {/* <ReactMap /> */}
+        <ReactMap />
 
         <Route
           exact path='/login'
           render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
         />
-        
+
         <Route
           exact path='/profile'
           render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
@@ -125,8 +125,8 @@ class App extends React.Component {
         <Route exact path='/destinations' component={DestinationIndex} />
 
         {/* keep the route route. dont delete */}
-        {/* <Route exact path='/destinations/:id' 
-          render={(props) => <DestinationPage user={this.state.currentUser} {...props}  />}
+        {/* <Route exact path='/destinations/:id'
+          render={(props) => <DestinationPage user={this.state.currentUser} {...props} />}
         /> */}
 
         <Route exact path='/destinations/:id' component={DestinationPage} />
