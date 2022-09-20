@@ -80,12 +80,14 @@ class App extends React.Component {
                     <li>Welcome {this.state.currentUser.name} | </li>
                     <li><Link to='/profile'>My Profile</Link></li>
                     <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
+                    <li><Link to='/destinations'>Destinations</Link></li>
                   </ul>
                 )
                 :
                 (
                   <ul>
                     <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/destinations'>Destinations</Link></li>
                   </ul>
                 )
             }

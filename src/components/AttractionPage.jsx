@@ -16,7 +16,10 @@ class AttractionPage extends React.Component {
     currentUserPlanners: [],
 
     loading: true,
-    error: null
+    error: null,
+
+    addAttractionResponse: '',
+    addAttractionError: '',
   }
 
   componentDidMount(){
@@ -62,11 +65,22 @@ class AttractionPage extends React.Component {
   }
 
   postAttraction = async (plannerId) => {
-    console.log('Post attraction to planner:', plannerId)
 
-    const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_attraction/${this.props.match.params.id}`)
+    try {
+  
+      const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_attraction/${this.props.match.params.id}`)
+      console.log(`Post response:`, res.data);
 
-    console.log(`Post response:`, res.data);
+      this.setState({addAttractionResponse: res.data.response})
+      
+    } catch( err ){
+
+      console.log('error message:', err);
+      console.log('error message:', err.response.data.error);
+      
+      this.setState({addAttractionResponse: err.response.data.error})
+
+    }
 
   } 
 
@@ -87,6 +101,8 @@ class AttractionPage extends React.Component {
           receivePlannerId={this.postAttraction} 
           currentAttraction={this.state.attraction}
         />
+        <p>{this.state.addAttractionResponse}</p>
+        <p>{this.state.addAttractionError}</p>
 
         <div>
         {
@@ -110,7 +126,6 @@ class AttractionPage extends React.Component {
             :
             (
               <h2>No events planned for now.</h2>
-              
             )
         }
         </div>
