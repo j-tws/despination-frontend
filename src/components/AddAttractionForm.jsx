@@ -16,7 +16,7 @@ class AddAttractionForm extends React.Component {
     console.log('button clicked!');
     console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
-    this.props.receivePlannerId(this.state.selectedPlannerId, this.props.currentAttraction)
+    this.props.receivePlannerId(this.state.selectedPlannerId)
   }
 
   render(){

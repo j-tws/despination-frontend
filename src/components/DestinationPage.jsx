@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './DestinationPages.css'
+import './DestinationPage.css'
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 
 
