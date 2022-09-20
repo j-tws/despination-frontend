@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React from 'react'; // why it cant be this?
 import axios from 'axios';
 
+
 export default class Registration extends Component {
 
     constructor(props) {
@@ -17,6 +18,10 @@ export default class Registration extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+
+
+
+
     handleChange(event) {
         this.setState({
             // getting the name from the input section below and set the value dynamically
@@ -31,15 +36,15 @@ export default class Registration extends Component {
         axios.post("http://localhost:3000/users", {
             user: {
                 name: this.state.name,
-                email: this.state.email,
+                email: this.state.email.toLowerCase(),
                 password: this.state.password
             }
         },
             // { withCredentials: true }
             // tell API that's ok to set that cookie on our client
             // or else it would look like the user is not logged in
-        ).then(response => {
-            console.log("registration response");
+        ).then(res => {
+            console.log("registration response", res.data);
         }).catch(error => {
             console.log("registration error", error);
         })
@@ -60,7 +65,7 @@ export default class Registration extends Component {
                         placeholder="Name"
                         value={this.state.name}
                         onChange={this.handleChange}
-                        required
+                        required //making sure field form is inserted
                     />
 
                     <input

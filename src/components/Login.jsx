@@ -8,7 +8,8 @@ class Login extends React.Component {
     // The state this time needs to hold the email and password we're going to submit
     state = {
         email: '',
-        password: ''
+        password: '',
+        errorMessage:''
     }
 
     // handle typing in the form
@@ -41,11 +42,12 @@ class Login extends React.Component {
             this.props.setCurrentUser()
             this.props.history.push('/profile')
 
-            console.log(result.data);
-            console.log(result.data.jwt);
+            // console.log(result.data);
+            // console.log(result.data.jwt);
         })
         .catch( err => {
             console.warn(err)
+            this.setState({errorMessage:err.message})
         })
         ev.preventDefault()
     }
@@ -82,6 +84,7 @@ class Login extends React.Component {
                     name="email"
                     type="email"
                     placeholder='Enter Email'
+                    required //making sure field form is inserted
                 />
                 <br />
                 <input
@@ -89,6 +92,7 @@ class Login extends React.Component {
                     name="password"
                     type="password"
                     placeholder='Enter password'
+                    required //making sure field form is inserted
                 />
                 <br />
                 <button>Login</button>

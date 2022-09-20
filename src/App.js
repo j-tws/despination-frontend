@@ -41,13 +41,20 @@ class App extends React.Component {
   // If our token is valid then we set the state to our current user. If not you'll see a warning in your console that you're unauthorized
   setCurrentUser = () => {
     console.log("localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
+    const jwtAvailable = localStorage.getItem("jwt")
     let token = "Bearer " + localStorage.getItem("jwt");
-    axios.defaults.headers.common['Authorization'] = token;
-    axios.get(`${BASE_URL}/users/current`)
-      .then(res => {
-        this.setState({ currentUser: res.data })
-      })
-      .catch(err => console.warn(err))
+
+    if (jwtAvailable) {
+      axios.defaults.headers.common['Authorization'] = token;
+      axios.get(`${BASE_URL}/users/current`)
+        .then(res => {
+          console.log('setting currentuser');
+          this.setState({ currentUser: res.data }, () => console.log('current user set'))
+        })
+        .catch(err => console.warn(err))
+    } else {
+      console.log('No token in local storage.')
+    }
   }
 
   // function to log the user out
@@ -96,6 +103,9 @@ class App extends React.Component {
           </nav>
 
           <Registration />
+
+
+
 
         </header>
 
