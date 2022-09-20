@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class AddAttractionForm extends React.Component {
+class AddRemoveAttractionForm extends React.Component {
 
   state = {
     selectedPlannerId: null,
@@ -12,11 +12,18 @@ class AddAttractionForm extends React.Component {
     this.setState({selectedPlannerId: ev.target.value})
   }
 
-  handleSubmit = (ev) => {
+  handleAddSubmit = (ev) => {
     console.log('button clicked!');
     console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
-    this.props.receivePlannerId(this.state.selectedPlannerId)
+    this.props.addAttraction(this.state.selectedPlannerId)
+  }
+
+  handleRemoveSubmit = (ev) => {
+    console.log('button clicked!');
+    console.log('planner selected:', this.state.selectedPlannerId);
+    ev.preventDefault()
+    this.props.removeAttraction(this.state.selectedPlannerId)
   }
 
   render(){
@@ -34,7 +41,8 @@ class AddAttractionForm extends React.Component {
             }
           </select>
 
-          <button onClick={this.handleSubmit}>Add attraction</button>
+          <button onClick={this.handleAddSubmit}>Add attraction</button>
+          <button onClick={this.handleRemoveSubmit}>Remove attraction</button>
 
         </form>
       </div>
@@ -44,4 +52,4 @@ class AddAttractionForm extends React.Component {
 
 }
 
-export default AddAttractionForm
+export default AddRemoveAttractionForm

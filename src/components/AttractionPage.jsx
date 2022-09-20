@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import './AttractionPage.css'
-import AddAttractionForm from './AddAttractionForm';
+import AddRemoveAttractionForm from './AddRemoveAttractionForm';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -18,22 +18,22 @@ class AttractionPage extends React.Component {
     loading: true,
     error: null,
 
-    addAttractionResponse: '',
-    addAttractionError: '',
+    addRemoveAttractionResponse: '',
+    addRemoveAttractionError: '',
   }
 
   componentDidMount(){
 
     let token = "Bearer " + localStorage.getItem("jwt")
-      console.log(token)
-      console.log('result token')
+      // console.log(token)
+      // console.log('result token')
       axios.get(`${BASE_URL}/users/current`, {
           headers: {
               'Authorization': token
           }
       })
       .then(res => {
-        console.log(`data:`,res.data)
+        // console.log(`data:`,res.data)
         console.log(`currentUserPlanners:`, res.data.planners)
 
         this.setState({currentUser: res.data}) 
@@ -51,14 +51,14 @@ class AttractionPage extends React.Component {
     try {
       const res = await axios.get(`${BASE_URL}/attractions/${id}`)
 
-      console.log('response data:', res.data );
-      console.log('attraction events:', res.data.events);
+      // console.log('response data:', res.data );
+      // console.log('attraction events:', res.data.events);
 
       this.setState({attraction: res.data})
       this.setState({attractionEvents: res.data.events})
 
     } catch( err ){
-      console.error('Error loading data from API', err);
+      // console.error('Error loading data from API', err);
       this.setState({ error: err })
     }
 
@@ -69,16 +69,37 @@ class AttractionPage extends React.Component {
     try {
   
       const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_attraction/${this.props.match.params.id}`)
-      console.log(`Post response:`, res.data);
+      // console.log(`Post response:`, res.data);
 
-      this.setState({addAttractionResponse: res.data.response})
+      this.setState({addRemoveAttractionResponse: res.data.response})
       
     } catch( err ){
 
-      console.log('error message:', err);
+      // console.log('error message:', err);
+      // console.log('error message:', err.response.data.error);
+      
+      this.setState({addRemoveAttractionResponse: err.response.data.error})
+
+    }
+
+  } 
+
+  deleteAttraction = async (plannerId) => {
+
+    console.log(`info received:`, plannerId);
+    try {
+  
+      const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_attraction/${this.props.match.params.id}`)
+      console.log(`Delete response:`, res.data);
+
+      this.setState({addRemoveAttractionResponse: res.data.response})
+      
+    } catch( err ){
+
+      // console.log('error message:', err);
       console.log('error message:', err.response.data.error);
       
-      this.setState({addAttractionResponse: err.response.data.error})
+      this.setState({addRemoveAttractionResponse: err.response.data.error})
 
     }
 
@@ -96,13 +117,13 @@ class AttractionPage extends React.Component {
 
         <p><strong>Address:</strong>{this.state.attraction.address}</p>
 
-        <AddAttractionForm 
+        <AddRemoveAttractionForm 
           userPlanners={this.state.currentUserPlanners} 
-          receivePlannerId={this.postAttraction} 
-          currentAttraction={this.state.attraction}
+          addAttraction={this.postAttraction} 
+          removeAttraction={this.deleteAttraction} 
         />
-        <p>{this.state.addAttractionResponse}</p>
-        <p>{this.state.addAttractionError}</p>
+        <p>{this.state.addRemoveAttractionResponse}</p>
+        <p>{this.state.addRemoveAttractionError}</p>
 
         <div>
         {
