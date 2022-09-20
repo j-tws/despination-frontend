@@ -1,18 +1,20 @@
 .mapContainer {
     width: 90vw;
-    height: 50vw;
+    height: 40vw;
     margin: 0 auto; 
+    
 
 }
 
 .mapTitle {
-    color: green;
+    color: #E87F5B;
+    
     
 
 }
 
 .mapMarker {
-    background-color: red;
+    background-color: #E87F5B; 
     border-radius: 50%;
     width: 20px;
     height: 20px;
