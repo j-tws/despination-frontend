@@ -124,11 +124,15 @@ class App extends React.Component {
 
         <Route exact path='/destinations' component={DestinationIndex} />
 
-        <Route exact path='/destinations/:id'
+        {/* keep the route route. dont delete */}
+        {/* <Route exact path='/destinations/:id'
           render={(props) => <DestinationPage user={this.state.currentUser} {...props} />}
-        />
+        /> */}
+
+        <Route exact path='/destinations/:id' component={DestinationPage} />
 
         <Route exact path='/attractions/:id' component={AttractionPage} />
+
         <Route exact path='/planners/:id' component={PlannerPage} />
 
       </Router>
