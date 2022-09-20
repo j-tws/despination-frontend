@@ -10,87 +10,96 @@ const BASE_URL = 'http://localhost:3000'
 // Component to show details about the user.
 
 class MyProfile extends React.Component {
-    state = {
-        currentUser: {
-            name: '',
-            email: '',
-            id: ''
-        },
-        planners: [],
-        loading: true,
-        error: null
-    }
+  state = {
+    currentUser: {
+      name: '',
+      email: '',
+      id: ''
+    },
+    planners: [],
+    loading: true,
+    error: null
+  }
 
-    componentDidMount(){
-        let token = "Bearer " + localStorage.getItem("jwt")
-        console.log(token)
-        console.log('result token')
-        axios.get(`${BASE_URL}/users/current`, {
-            headers: {
-                'Authorization': token
-            }
-        })
-        
-        .then(res => {
-            // console.log(`data:`,res.data)
-            this.setState({currentUser: res.data}, () => this.fetchUser(this.state.currentUser.id)) 
-            //call back function to be run after setState operation completes becasue setState is async
-        })
-        .catch(err => console.warn(err))
-        
-    }
+  componentDidMount(){
+    let token = "Bearer " + localStorage.getItem("jwt")
+    console.log(token)
+    console.log('result token')
+    axios.get(`${BASE_URL}/users/current`, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    
+    .then(res => {
+      // console.log(`data:`,res.data)
+      this.setState({currentUser: res.data}, () => this.fetchUser(this.state.currentUser.id)) 
+      //call back function to be run after setState operation completes becasue setState is async
+    })
+    .catch(err => console.warn(err))
+      
+  }
 
-    fetchUser = async (userID) => {
-        console.log(userID);
-        let token = "Bearer " + localStorage.getItem("jwt")
-        try{
-            const res = await axios.get(
-                `${BASE_URL}/users/${userID}`, 
-                {
-                    headers: {
-                        'Authorization': token
-                    }
-                }
-            );
-            
-            this.setState({
-                loading: false,
-                planners: res.data.planners,
-            })
-            // console.log('res.data results',res.data )
-
-        } catch (err){
-            console.error('Error loading from API', err)
+  fetchUser = async (userID) => {
+    console.log(userID);
+    let token = "Bearer " + localStorage.getItem("jwt")
+    try{
+      const res = await axios.get(
+        `${BASE_URL}/users/${userID}`, 
+        {
+          headers: {
+            'Authorization': token
+          }
         }
+      );
+      
+      this.setState({
+        loading: false,
+        planners: res.data.planners,
+      })
+      // console.log('res.data results',res.data )
+
+    } catch (err){
+      console.error('Error loading from API', err)
     }
+  }
 
 
-    render() {
+  render() {
 
-        return (
-            <div>
-                <h1>Welcome back, {this.state.currentUser.name}!</h1>
-                {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
+    return (
+      <div>
+        <h1>Welcome back, {this.state.currentUser.name}!</h1>
+        {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
+        <button className="planner-create">Make new planner</button>
 
-                    <ul className='profile-list'>
-                        {this.state.planners.map(planner => { return(
-                            <li key={planner.id}>
-                                <Link to= {`/planners/${planner.id}`}>
-                                <img src={planner.image} className="profile-img" alt={planner.name} />
-                                </Link>
-                                <br />
-                                <h3>{planner.name}</h3>
-                                
-                            </li>
+          <ul className='planner-list'>
+            {this.state.planners.map(planner => { return(
+              <div className="planner-box">
+                <li key={planner.id}>
+                  <Link to= {`/planners/${planner.id}`}>
+                    <img src={planner.image} className="profile-img" alt={planner.name} />
+                    <h3 class="planner-name">{planner.name}</h3>
+                
+                  </Link>
+                    
+                </li>
 
-                        )})}
-                    </ul>
+                <div className="planner-edit-delete">
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </div>
 
-            </div>
+              </div>
 
-        )
+            )})}
+          </ul>
 
-    }
+      </div>
+
+    )
+
+  }
 
 }
 
