@@ -97,14 +97,18 @@ class DestinationPage extends React.Component {
           </ul>
 
           <h2>All events happening in this city</h2>
-            <ul>
+            <div className="destination-event-grid">
               {
                 this.state.allEvents.map( (event) => (
-                  <li>{event.name}</li>
+                  <div className="destination-event-box">
+                    <img src={event.image} alt={event.name} />
+                    <h3>{event.name}</h3>
+                    <p><strong>{event.time}</strong></p>
+                    <p>{event.description}</p>
+                  </div>
                 ))
               }
-            </ul>
-              
+            </div>
         </div>
         )
 

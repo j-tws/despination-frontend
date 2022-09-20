@@ -17,3 +17,20 @@
     display: inline-block;
     margin: 0 10px;
 }
+
+.destination-event-grid {
+    display: flex;
+}
+
+.destination-event-box {
+    width: 300px;
+    border: 1px solid red;
+    display: inline-block;
+    margin: 10px 20px;
+}
+
+.destination-event-box img {
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
+}

@@ -111,7 +111,11 @@ class AttractionPage extends React.Component {
       <div className="attraction-page">
         <h2>{this.state.attraction.name}</h2>
 
-        <img className="attraction-main-img" src={this.state.attraction.image} alt={this.state.attraction.name} />
+        <img 
+          className="attraction-main-img" 
+          src={this.state.attraction.image} 
+          alt={this.state.attraction.name} 
+        />
 
         <p className="attraction-description">{this.state.attraction.description}</p>
 
@@ -134,7 +138,8 @@ class AttractionPage extends React.Component {
                 <h2>What's happening here?</h2>
                 {
                 this.state.attractionEvents.map( (event) => (
-                  <div>
+                  <div className="all-events">
+                    <img src={event.image} alt={event.name} />
                     <h3>{event.name}</h3>
                     <p><strong>{event.time}</strong></p>
                     <p>{event.description}</p>
