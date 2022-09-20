@@ -61,10 +61,10 @@ class AttractionPage extends React.Component {
 
   }
 
-  postAttraction = async (plannerId, attraction) => {
-    console.log('Post attraction to planner:', plannerId, attraction)
+  postAttraction = async (plannerId) => {
+    console.log('Post attraction to planner:', plannerId)
 
-    const res = await axios.post(`${BASE_URL}/planners/${plannerId}`, {attractions: attraction})
+    const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_attraction/${this.props.match.params.id}`)
 
     console.log(`Post response:`, res.data);
 

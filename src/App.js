@@ -40,12 +40,8 @@ class App extends React.Component {
   setCurrentUser = () => {
     console.log( "localStorage.getItem('jwt'):", localStorage.getItem("jwt"));
     let token = "Bearer " + localStorage.getItem("jwt");
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    axios.get(`${BASE_URL}/users/current`, {
-      headers: {
-        'Authorization': token
-      }
-    })
+    axios.defaults.headers.common['Authorization'] = token;
+    axios.get(`${BASE_URL}/users/current`)
       .then(res => {
         this.setState({ currentUser: res.data })
       })
