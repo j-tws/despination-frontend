@@ -12,6 +12,7 @@ import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
+import ReactMap from './components/ReactMap';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -98,7 +99,7 @@ class App extends React.Component {
 
         </header>
 
-
+        <ReactMap />
 
         <Route
           exact path='/login'
