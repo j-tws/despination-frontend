@@ -32,7 +32,7 @@ class MyProfile extends React.Component {
         })
         
         .then(res => {
-            console.log(`data:`,res.data)
+            // console.log(`data:`,res.data)
             this.setState({currentUser: res.data}, () => this.fetchUser(this.state.currentUser.id)) 
             //call back function to be run after setState operation completes becasue setState is async
         })
@@ -57,7 +57,7 @@ class MyProfile extends React.Component {
                 loading: false,
                 planners: res.data.planners,
             })
-            console.log('res.data results',res.data )
+            // console.log('res.data results',res.data )
 
         } catch (err){
             console.error('Error loading from API', err)
