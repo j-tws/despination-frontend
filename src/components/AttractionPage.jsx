@@ -23,6 +23,8 @@ class AttractionPage extends React.Component {
     addRemoveAttractionResponse: '',
     addRemoveEventResponse: '',
 
+    likes: null,
+
   }
 
   componentDidMount(){
@@ -56,9 +58,14 @@ class AttractionPage extends React.Component {
 
       // console.log('response data:', res.data );
       // console.log('attraction events:', res.data.events);
+      console.log(`attraction users:`, res.data.users.length);
 
-      this.setState({attraction: res.data})
-      this.setState({attractionEvents: res.data.events})
+      this.setState({
+        attraction: res.data,
+        attractionEvents: res.data.events,
+        likes: res.data.users.length
+      })
+    
 
     } catch( err ){
       // console.error('Error loading data from API', err);
@@ -155,8 +162,10 @@ class AttractionPage extends React.Component {
           src={this.state.attraction.image} 
           alt={this.state.attraction.name} 
         />
-
-        <LikeButton />
+        <div>
+          <LikeButton /> 
+          <p>{this.state.likes}</p>
+        </div>
 
         <p className="attraction-description">{this.state.attraction.description}</p>
 

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import Heart from "react-animated-heart"
-// import Heart from 'react-animated-heart';
+import React from "react";
+// import Heart from "react-animated-heart"
 
 class LikeButton extends React.Component {
 
@@ -9,11 +8,14 @@ class LikeButton extends React.Component {
 
     return (
 
-    <div className="App">
-      <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+    // <div className="App">
+    //   <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
         
 
-    </div>
+    // </div>
+      
+      <button class="like-button">Like</button>
+
     )
 
   }
