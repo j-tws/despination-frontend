@@ -5,7 +5,6 @@ import './MyProfile.css';
 import PlannerForm from './PlannerForm';
 
 
-
 const BASE_URL = 'http://localhost:3000'
 
 // Component to show details about the user.
@@ -93,8 +92,11 @@ class MyProfile extends React.Component {
     try {
       console.log(`Planner id:`, id);
       const res = await axios.delete(`${BASE_URL}/planners/${id}`)
-      console.log(`response:`,res.data);
-      this.setState({planners: [...this.state.planners]})
+      console.log(`response:`,res.data.object);
+      
+      const remainingPlanners = this.state.planners.filter( planner => planner.id != id)
+
+      this.setState({planners: remainingPlanners})
 
     } catch( err ){
       console.log(err);
