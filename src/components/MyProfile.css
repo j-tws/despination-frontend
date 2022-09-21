@@ -1,10 +1,35 @@
 .profile-img {
-    width: 400px;
-    height: 250px;
+    width: 250px;
+    height: 140px;
     object-fit: cover;
+    display: inline-block;
 }
 
-.profile-list {
-    display: inline-block;
-    margin: 0 10px;
+.planner-list {
+    /* border: 1px solid red; */
+    display: grid;
+    
 }
+
+.planner-name {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    border: 1px solid red;
+    vertical-align: middle;
+}
+
+.planner-box{
+    position: relative;
+    width: 75vw;
+    border: 2px solid rgb(48, 48, 48);
+    margin: 15px auto;
+    padding: 15px;
+}
+
+.planner-edit-delete {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+

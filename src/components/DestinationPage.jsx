@@ -120,7 +120,7 @@ class DestinationPage extends React.Component {
             this.state.historicalAttractions.map( (attraction) => (
               
               <Link to={`/attractions/${attraction.id}`}>
-                <li className="attraction-list">
+                <li key={attraction.id} className="attraction-list">
                   <img className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
@@ -135,7 +135,7 @@ class DestinationPage extends React.Component {
             this.state.natureAttractions.map( (attraction) => (
               
               <Link to={`/attractions/${attraction.id}`}>
-                <li className="attraction-list">
+                <li key={attraction.id} className="attraction-list">
                   <img className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
@@ -150,7 +150,7 @@ class DestinationPage extends React.Component {
             this.state.eateryAttractions.map( (attraction) => (
               
               <Link to={`/attractions/${attraction.id}`}>
-                <li className="attraction-list">
+                <li key={attraction.id} className="attraction-list">
                   <img className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
