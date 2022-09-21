@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 class PlannerForm extends React.Component{
 
@@ -33,8 +35,8 @@ class PlannerForm extends React.Component{
     this.setState({plannerImg: ev.target.value})
   }
 
-  handleSubmit = (ev) => {
-    // console.log(`Form submitted:`, this.state.plannerName, this.state.plannerImg);
+  handleSubmit = () => {
+    console.log(`Form submitted:`, this.state.plannerName, this.state.plannerImg);
     this.props.submitForm(this.state.plannerName, this.state.plannerImg)
   }
 
@@ -45,14 +47,16 @@ class PlannerForm extends React.Component{
         <h2>Create more holidays here!</h2>
         <form onSubmit={this.handleSubmit}>
           <p>Planner Name</p>
-          <input type="text" onChange={this.handleNameInput}/>
+          <input type="text" onChange={this.handleNameInput} placeholder="Planner Name"/>
           <p>Image</p>
-          <input type="text" onChange={this.handleImgInput} />
+          <input type="text" onChange={this.handleImgInput} placeholder="Image URL"/>
           <br />
           
           <button>Make planner!</button>
         </form>
+
       </div>
+
     )
 
   }
