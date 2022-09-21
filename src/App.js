@@ -149,7 +149,7 @@ class App extends React.Component {
 
         <Route exact path='/planners/:id' component={PlannerPage} />
 
-        <Route exact path='/demo' component={Demo} />
+        {/* <Route exact path='/demo' component={Demo} /> */}
 
 
       </Router>

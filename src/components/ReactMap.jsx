@@ -349,7 +349,7 @@ class ReactMap extends React.Component {
           <GoogleMapReact
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            defaultCenter={ {lat: 2, lng:28} }
+            defaultCenter={ {lat: 2, lng:35} }
             defaultZoom={ 1 }
             options={{styles: mapOptions}} // this for the customised google map
           >
