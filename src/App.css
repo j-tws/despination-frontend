@@ -1,13 +1,22 @@
 
+ul{
+   list-style-type: none;
+}
+
 
 h1{
   text-align: center;
+  color: black;
 }
 
 /*  This is to remove default hyperlink line */
-a{
+a:link{
   text-decoration: none;
+ 
 }
+
+
+
 
 
 

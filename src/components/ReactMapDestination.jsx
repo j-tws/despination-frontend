@@ -1,5 +1,5 @@
 import React from 'react'
-import './ReactMap.css'
+// import './ReactMapDestination.css'
 // Why do we need a package?
 // For a non-React page, ie a Rails template, we can just
 // use a <script> tag to load the Gmaps API and add markers
@@ -20,7 +20,7 @@ const BASE_URL = 'http://localhost:3000'
 
 function MyMarker( props ){
   return (
-    <div className="mapMarker" onClick={ props.onThisClick }>
+    <div className="mapMarkerDes" onClick={ props.onThisClick }>
       {props.name}
       <div className="details">{props.address}</div>
     </div>
@@ -354,15 +354,15 @@ class ReactMapDestination extends React.Component{
 
     return (
      <div>
-        {/* <h1 className="mapTitle">DesPination</h1> */}
+      
           
-        <div className="mapContainer">
+        <div className="mapContainerDes">
 
           <GoogleMapReact
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
             defaultCenter={ {lat: 2, lng:28} }
-            defaultZoom={ 3 }
+            defaultZoom={ 7 }
             options={{styles: mapOptions}} // this for the customised google map
           >
 

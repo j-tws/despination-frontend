@@ -349,16 +349,11 @@ class ReactMap extends React.Component {
           <GoogleMapReact
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            defaultCenter={ {lat: 2, lng:28} }
-            defaultZoom={ 1 }
+            defaultCenter={ {lat: 2, lng:35} }
+            defaultZoom={ 0 }
             options={{styles: mapOptions}} // this for the customised google map
           >
-            {/* can wrap component around a div */}
-            {/*
-            <MyMarker lat={-20.7536} lng={101.2886} />
-            <MyMarker lat={-18.7536} lng={121.2886} />
-            */}
-
+           
             {
               this.state.destinations.map( destination => (
                   <MyMarker 
