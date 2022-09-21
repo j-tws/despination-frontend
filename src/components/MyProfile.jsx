@@ -42,7 +42,6 @@ class MyProfile extends React.Component {
     })
     .catch(err => console.warn(err))
     
-    // setInterval(this.fetchUser, 1000)
   }
 
   fetchUser = async (userID) => {
@@ -82,12 +81,29 @@ class MyProfile extends React.Component {
       
       })
 
-
     } catch( err ){
       console.error(err);
+      this.setState({plannerFormResponse: err.response.data.error})
     }
 
   }
+
+  deletePlanner = async (id) => {
+    
+    try {
+      console.log(`Planner id:`, id);
+      const res = await axios.delete(`${BASE_URL}/planners/${id}`)
+      console.log(`response:`,res.data);
+      this.setState({planners: [...this.state.planners]})
+
+    } catch( err ){
+      console.log(err);
+
+    }
+
+  }
+
+  
 
   render() {
 
@@ -113,7 +129,7 @@ class MyProfile extends React.Component {
 
                 <div className="planner-edit-delete">
                   <button>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={() => this.deletePlanner(planner.id)}>Delete</button>
                 </div>
 
               </div>
