@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import './MyProfile.css';
 import PlannerForm from './PlannerForm';
+import Form from 'react-bootstrap';
 
 
 const BASE_URL = 'http://localhost:3000'
@@ -58,7 +59,7 @@ class MyProfile extends React.Component {
       
       this.setState({
         loading: false,
-        planners: res.data.planners,
+        planners: res.data.planners.reverse(),
       })
       // console.log('res.data results',res.data )
 
@@ -111,11 +112,23 @@ class MyProfile extends React.Component {
 
     return (
       <div>
+        <Router>
+
         <h1>Welcome back, {this.state.currentUser.name}!</h1>
         {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
 
         <PlannerForm submitForm={this.postPlanner}/>
         <p>{this.state.plannerFormResponse}</p>
+
+        {/* <Link to="/profile/create_planner">Create new Planner</Link>
+
+        <Route
+          exact path='/profile/create_planner'
+          render={(props) => <PlannerForm user={this.state.currentUser} {...props} />}
+        /> */}
+
+
+        <h2>List of All Planners</h2>
 
           <ul className='planner-list'>
             {this.state.planners.map(planner => { return(
@@ -139,6 +152,7 @@ class MyProfile extends React.Component {
             )})}
           </ul>
 
+        </Router>
       </div>
 
     )

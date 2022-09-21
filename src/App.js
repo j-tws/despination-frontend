@@ -13,7 +13,7 @@ import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
-import PlannerForm from './components/PlannerForm';
+import Button from 'react-bootstrap/Button';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -23,6 +23,9 @@ class App extends React.Component {
   state = {
     currentUser: undefined,
     // destinations: [],
+
+
+
     loading: true,
     error: null
   }
@@ -74,6 +77,7 @@ class App extends React.Component {
   // This is where all our HTML goes
 
   // This is something like to notify whether a user is logged in or not (mostly at the home page), or a display text saying "Welcome, username"
+
   render() {
 
     return (
@@ -118,10 +122,21 @@ class App extends React.Component {
           render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
         />
 
-        <Route
-          exact path='/profile'
-          render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
-        />
+        {
+          this.state.currentUser !== undefined
+            ?
+            (
+              <Route
+                exact path='/profile'
+                render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
+              />
+            )
+            :
+            (
+              <h3>You need to sign up / log in to access this feature.</h3>
+            )
+        }
+
 
         <Route exact path='/destinations' component={DestinationIndex} />
 
@@ -135,6 +150,7 @@ class App extends React.Component {
         <Route exact path='/attractions/:id' component={AttractionPage} />
 
         <Route exact path='/planners/:id' component={PlannerPage} />
+
 
 
       </Router>
