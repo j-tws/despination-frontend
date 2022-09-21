@@ -381,8 +381,8 @@ class ReactMap extends React.Component {
           <GoogleMapReact
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            defaultCenter={ {lat: 2, lng:28} }
-            defaultZoom={ 1 }
+            center={ {lat: 2, lng:28} }
+            zoom={ 1 }
             options={{styles: mapOptions}} // this for the customised google map
             yesIWantToUseGoogleMapApiInternals
             onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, this.state.destinations)}
