@@ -27,10 +27,9 @@ class App extends React.Component {
     currentUser: undefined,
     // destinations: [],
 
-
-
     loading: true,
-    error: null
+    error: null,
+
   }
 
   // function to run on component mounting
