@@ -4,6 +4,7 @@ import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import './AttractionPage.css'
 import AddRemoveAttractionForm from './AddRemoveAttractionForm';
 import AddRemoveEventForm from './AddRemoveEventForm';
+import LikeButton from './LikeButton';
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -154,6 +155,8 @@ class AttractionPage extends React.Component {
           src={this.state.attraction.image} 
           alt={this.state.attraction.name} 
         />
+
+        <LikeButton />
 
         <p className="attraction-description">{this.state.attraction.description}</p>
 

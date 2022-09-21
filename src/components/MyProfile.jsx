@@ -139,7 +139,7 @@ class MyProfile extends React.Component {
                     <h3 className="planner-name">{planner.name}</h3>
                 
                   </Link>
-                    
+  
                 </li>
 
                 <div className="planner-edit-delete">

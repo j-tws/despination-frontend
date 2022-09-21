@@ -1,4 +1,5 @@
 import React from 'react';
+import './EditNotes.css'
 
 class EditNotes extends React.Component {
 
@@ -19,7 +20,7 @@ class EditNotes extends React.Component {
   render(){
 
     return (
-      <div>
+      <div className="notes-form">
         textarea edit form testing
         <form onSubmit={this.handleSubmit}>
           <textarea 

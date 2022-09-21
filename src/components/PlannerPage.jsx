@@ -60,8 +60,9 @@ class PlannerPage extends React.Component {
     console.log(`patching through:`, text);
     this.setState({editNotes: false})
     try {
-      const res = await axios.patch(`${BASE_URL}/planners/${this.props.match.params.id}`)
+      const res = await axios.patch(`${BASE_URL}/planners/${this.props.match.params.id}`, {notes: text})
       console.log(`patch response:`, res.data);
+      this.setState({planner: res.data})
 
     } catch( err ){
       console.error(`error message:`, err);
