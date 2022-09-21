@@ -16,7 +16,7 @@ import { Route, HashRouter as Router, Link } from 'react-router-dom';
 // const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
 const GMAPS_API_KEY = 'AIzaSyDS2v9oBeTWLdjnaG0ZvVG1gYLxzmlVMGA';
 
-const BASE_URL_DESTINATIONS_LOCATION = 'http://localhost:3000/destinations/locations'
+const BASE_URL = 'http://localhost:3000'
 
 function MyMarker( props ){
   return (
@@ -27,10 +27,14 @@ function MyMarker( props ){
   )
 }
 
-class ReactMap extends React.Component {
 
-  state = {
-    destinations: [],
+class ReactMapDestination extends React.Component{
+
+    state = {
+    destinations: {},
+    attractions: [],
+    events:[],
+
     loading: true,
     error: null
 
@@ -38,12 +42,13 @@ class ReactMap extends React.Component {
 
   componentDidMount(){
 
-    this.fetchDestinations()
+    this.fetchAttractions(this.props.destinationId)
 
   }
 
-  fetchDestinations = async() => {
+  fetchAttractions = async(id) => {
 
+    //   console.log(`id:,`,id)
     try {
       // TODO: get user location from Geolocation browser API
       // and set lat, lng to your backend as part of a AJAX request -
@@ -51,21 +56,28 @@ class ReactMap extends React.Component {
       // YOu could additionally let the user select a search from a dropdown
       // and send that to the backend too, to use with the .near() query
 
-      const res = await axios.get(BASE_URL_DESTINATIONS_LOCATION);
-  
-      console.log('response:', res.data);
-      this.setState({ loading:false, destinations: res.data})
+      const res = await axios.get(`${BASE_URL}/destinations/${id}`);
+    //   console.log('response:', res.data.destination);  
+    //   console.log('response:', res.data.destination.address);  
+    //   console.log('response:', res.data.destination.attractions);  
 
-    }catch(err){
-      console.log(`error loading destination:`, err);
-      this.setState({loading: false, error: err})
-    }
+        this.setState({ 
+            // destination: res.data.destination,
+            // address: res.data.destination.address,
+            attractions: res.data.destination.attractions
+            
+        })
 
-  }//fetchDestinations
+        }catch(err){
+        console.log(`error loading attraction:`, err);
+        this.setState({loading: false, error: err})
+        }
 
-  handleMarkerClick = (destinationId) => {
-    console.log('Marker clicked:', destinationId);
-    this.props.history.push(`/destinations/${destinationId}`)
+  }//fetchAttractions
+
+  handleMarkerClick = (attractionId) => {
+    console.log('Marker clicked:', attractionId);
+    this.props.history.push(`/attractions/${attractionId}`)
     
   }
 
@@ -341,7 +353,7 @@ class ReactMap extends React.Component {
     ]
 
     return (
-      <div>
+     <div>
         {/* <h1 className="mapTitle">DesPination</h1> */}
           
         <div className="mapContainer">
@@ -350,24 +362,19 @@ class ReactMap extends React.Component {
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
             defaultCenter={ {lat: 2, lng:28} }
-            defaultZoom={ 1 }
+            defaultZoom={ 3 }
             options={{styles: mapOptions}} // this for the customised google map
           >
-            {/* can wrap component around a div */}
-            {/*
-            <MyMarker lat={-20.7536} lng={101.2886} />
-            <MyMarker lat={-18.7536} lng={121.2886} />
-            */}
 
             {
-              this.state.destinations.map( destination => (
+              this.state.attractions.map( attraction => (
                   <MyMarker 
-                    name={destination.name} 
-                    key={destination.id} 
-                    lat={destination.latitude} 
-                    lng={destination.longitude} 
-                    // address={destination.address} 
-                    onThisClick={ () => this.handleMarkerClick(destination.id) }
+                    name={attraction.name} 
+                    key={attraction.id} 
+                    lat={attraction.latitude} 
+                    lng={attraction.longitude} 
+                    // address={attraction.address} 
+                    onThisClick={ () => this.handleMarkerClick(attraction.id) }
                   />
               ))
             }
@@ -389,6 +396,15 @@ class ReactMap extends React.Component {
 
 
 
+
+
+
+    
+
+
+
+
 }
 
-export default ReactMap
+export default ReactMapDestination
+

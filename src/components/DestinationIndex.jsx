@@ -39,7 +39,6 @@ class DestinationIndex extends React.Component{
     return(
         <div>
           <div className="destination-heading">
-            <h1> des<em>Pin</em>ation</h1>
             <h2> Major destinations to explore </h2>
           </div>
             {

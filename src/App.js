@@ -13,7 +13,10 @@ import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
+import PlannerForm from './components/PlannerForm';
 import Button from 'react-bootstrap/Button';
+// import Demo from './Demo';
+
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -82,6 +85,7 @@ class App extends React.Component {
 
     return (
       <Router>
+
         <header>
           <nav>
             {/* Show one of two nav bars depending on if the user is logged in */}
@@ -100,6 +104,7 @@ class App extends React.Component {
                 (
                   <ul>
                     <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/registration'>Sign Up</Link></li>
                     <li><Link to='/destinations'>Destinations</Link></li>
                   </ul>
                 )
@@ -107,7 +112,8 @@ class App extends React.Component {
 
           </nav>
 
-          <Registration />
+
+          <h1> <Link to='/'>desPination</Link> </h1>
 
 
 
@@ -115,7 +121,8 @@ class App extends React.Component {
         </header>
 
         {/* Gmap is commented out for now as it is distracting */}
-        {/* <ReactMap /> */}
+
+        <Route exact path='/' component={ReactMap} />
 
         <Route
           exact path='/login'
@@ -138,7 +145,13 @@ class App extends React.Component {
         }
 
 
+
+
         <Route exact path='/destinations' component={DestinationIndex} />
+
+        <Route exact path='/registration' component={Registration} />
+
+
 
         {/* keep the route route. dont delete */}
         {/* <Route exact path='/destinations/:id'
@@ -150,6 +163,8 @@ class App extends React.Component {
         <Route exact path='/attractions/:id' component={AttractionPage} />
 
         <Route exact path='/planners/:id' component={PlannerPage} />
+
+        <Route exact path='/demo' component={Demo} />
 
 
 

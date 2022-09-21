@@ -3,6 +3,7 @@ import axios from 'axios';
 import './DestinationPage.css'
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import AddRemoveEventForm from './AddRemoveEventForm';
+import ReactMapDestination from './ReactMapDestination';
 
 
 const BASE_URL = 'http://localhost:3000'
@@ -195,6 +196,8 @@ class DestinationPage extends React.Component {
               ))
             }
           </div>
+            < ReactMapDestination destinationId={this.props.match.params.id}/> 
+
       </div>
       )
 
