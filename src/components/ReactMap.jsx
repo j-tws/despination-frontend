@@ -10,6 +10,8 @@ import './ReactMap.css'
 // we generally need to find a 'react wrapper' or React version of that library so that React + library are not fighting over the DOM
 import GoogleMapReact from 'google-map-react'
 import axios from 'axios'
+import { Route, HashRouter as Router, Link } from 'react-router-dom';
+
 
 // const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
 const GMAPS_API_KEY = 'AIzaSyDS2v9oBeTWLdjnaG0ZvVG1gYLxzmlVMGA';
@@ -63,6 +65,8 @@ class ReactMap extends React.Component {
 
   handleMarkerClick = (destinationId) => {
     console.log('Marker clicked:', destinationId);
+    this.props.history.push(`/destinations/${destinationId}`)
+    
   }
 
   handleMapClick = (ev) => {
@@ -345,7 +349,7 @@ class ReactMap extends React.Component {
           <GoogleMapReact
             onClick={ this.handleMapClick }
             bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            defaultCenter={ {lat: 13.7, lng:18} }
+            defaultCenter={ {lat: 8, lng:25} }
             defaultZoom={ 1 }
             options={{styles: mapOptions}} // this for the customised google map
           >
@@ -357,14 +361,14 @@ class ReactMap extends React.Component {
 
             {
               this.state.destinations.map( destination => (
-                <MyMarker 
-                  name={destination.name} 
-                  key={destination.id} 
-                  lat={destination.latitude} 
-                  lng={destination.longitude} 
-                  address={destination.address} 
-                  onThisClick={ () => this.handleMarkerClick(destination.id) }
-                />
+                  <MyMarker 
+                    name={destination.name} 
+                    key={destination.id} 
+                    lat={destination.latitude} 
+                    lng={destination.longitude} 
+                    // address={destination.address} 
+                    onThisClick={ () => this.handleMarkerClick(destination.id) }
+                  />
               ))
             }
 

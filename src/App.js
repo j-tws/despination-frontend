@@ -95,6 +95,7 @@ class App extends React.Component {
                 (
                   <ul>
                     <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/registration'>Sign Up</Link></li>
                     <li><Link to='/destinations'>Destinations</Link></li>
                   </ul>
                 )
@@ -102,7 +103,7 @@ class App extends React.Component {
 
           </nav>
 
-          <Registration />
+
 
 
 
@@ -110,7 +111,8 @@ class App extends React.Component {
         </header>
 
         {/* Gmap is commented out for now as it is distracting */}
-        <ReactMap />
+
+        <Route exact path='/' component={ReactMap} />
 
         <Route
           exact path='/login'
@@ -122,7 +124,13 @@ class App extends React.Component {
           render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
         />
 
+
+
         <Route exact path='/destinations' component={DestinationIndex} />
+
+        <Route exact path='/registration' component={Registration} />
+
+
 
         {/* keep the route route. dont delete */}
         {/* <Route exact path='/destinations/:id'
