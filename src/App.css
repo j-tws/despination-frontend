@@ -1,16 +1,13 @@
-.index-page{
-  width: 30%;
+
+
+h1{
+  text-align: center;
 }
 
-
-ul{
-   list-style-type: none;
+/*  This is to remove default hyperlink line */
+a{
+  text-decoration: none;
 }
-
-
-
-
-
 
 
 

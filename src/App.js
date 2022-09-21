@@ -14,6 +14,9 @@ import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
 import PlannerForm from './components/PlannerForm';
+import Button from 'react-bootstrap/Button';
+// import Demo from './Demo';
+
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -78,6 +81,7 @@ class App extends React.Component {
 
     return (
       <Router>
+
         <header>
           <nav>
             {/* Show one of two nav bars depending on if the user is logged in */}
@@ -105,6 +109,7 @@ class App extends React.Component {
           </nav>
 
 
+          <h1> <Link to='/'>desPination</Link> </h1>
 
 
 
@@ -143,6 +148,8 @@ class App extends React.Component {
         <Route exact path='/attractions/:id' component={AttractionPage} />
 
         <Route exact path='/planners/:id' component={PlannerPage} />
+
+        <Route exact path='/demo' component={Demo} />
 
 
       </Router>
