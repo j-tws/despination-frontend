@@ -29,6 +29,7 @@ class Login extends React.Component {
                 break;
             case 'password':
                 this.setState({password: ev.target.value})
+                break;
             default:
             console.log("error?");
         }
