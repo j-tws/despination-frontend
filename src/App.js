@@ -6,15 +6,13 @@ import { Route, Link, HashRouter as Router } from 'react-router-dom';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
 import DestinationPage from './components/DestinationPage';
-import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 import DestinationIndex from './components/DestinationIndex';
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
+
 import AttractionPage from './components/AttractionPage';
 import PlannerPage from './components/PlannerPage';
 import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
-import PlannerForm from './components/PlannerForm';
-import Button from 'react-bootstrap/Button';
+
 
 // import Demo from './Demo';
 

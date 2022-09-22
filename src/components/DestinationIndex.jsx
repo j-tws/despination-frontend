@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Route, HashRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './DestinationIndex.css'
 
 const BASE_URL = 'http://localhost:3000'
@@ -50,7 +50,10 @@ class DestinationIndex extends React.Component{
               { this.state.destinations.map( destination => { return(
                 <li key={destination.id} className="destination-list"> 
                   <Link className="link-styles" to={`/destinations/${destination.id}`}>
-                    <img src={destination.image} className="destination-img"/>
+                    <img 
+                    src={destination.image} className="destination-img"
+                    alt={destination.name}
+                    />
                     <div className="destination-name">{destination.name}</div>
                   </Link>
                 </li>

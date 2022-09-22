@@ -1,7 +1,6 @@
 import React from 'react'; 
-import ReactDOM from 'react-dom/client';
 import axios from 'axios';
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './PlannerPage.css'
 import EditNotes from './EditNotes';
 
@@ -83,7 +82,10 @@ class PlannerPage extends React.Component {
             {this.state.attractions.map(attraction => { return(
               <li key={attraction.id} className="attracts-list">
                 <Link to={`/attractions/${attraction.id}`}>
-                <img src={attraction.image} className="attracts-events-img"/>
+                <img 
+                  src={attraction.image} className="attracts-events-img"
+                  alt={attraction.name}
+                />
                 </Link>
                 <br />
                 <h3>{attraction.name}</h3>
@@ -98,7 +100,10 @@ class PlannerPage extends React.Component {
             <h2> What's the buzz in town! </h2>
               {this.state.events.map(events => { return(
                 <li key={events.id} className="events-list">
-                  <img src={events.image} className="attracts-events-img"/>
+                  <img 
+                    src={events.image} className="attracts-events-img"
+                    alt={events.name}
+                  />
                   <br />
                   <h3>{events.name}</h3>
                   <p>{events.location}</p>
