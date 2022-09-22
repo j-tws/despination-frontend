@@ -5,33 +5,26 @@
     display: inline-block;
 }
 
-.planner-list {
-    /* border: 1px solid red; */
-    display: grid;
-    
-}
+
 
 .planner-name {
     position: relative;
     display: inline-block;
     margin: auto;
-    border: 1px solid red;
+    font-family: 'Playfair Display', serif;
     vertical-align: middle;
 }
 
 .planner-box{
     position: relative;
-    width: 75vw;
-    border: 2px solid rgb(48, 48, 48);
+    width: 35vw;
+    height: 30vw;
+    border: 3px solid rgb(228, 228, 228);
     margin: 15px auto;
     padding: 15px;
 }
 
-.planner-edit-delete {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-}
+
 
 .profile-page h1 {
     border-bottom: 3px solid rgb(228, 228, 228);
@@ -48,6 +41,36 @@
     text-align: center;
     display: inline-block;
     margin: 5px;
+}
+
+.planner-list:hover .planner-name {
+    opacity: 1;
+}
+
+.planner-list:hover .profile-img {
+    filter: brightness(50%)
+}
+
+.planner-name {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18pt;
+    background-color: rgba(255, 255, 255, 0.838);
+    padding: 15px 30px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.profile-img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    filter: brightness(100%);
+    transition: filter 0.2s;
 }
 
 .profile-page h2{
@@ -72,10 +95,20 @@
     border-radius: 15px;
     outline: none;
     box-shadow: 2px 3px 8px 2px  rgb(202, 202, 202);
+    margin: 0;
+   
     
 }
 
-planner-edit-delete button:hover {
+.planner-edit-delete button:hover {
     background: #fdce00;
     cursor: pointer;
+}
+
+
+.planner-list {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
 }

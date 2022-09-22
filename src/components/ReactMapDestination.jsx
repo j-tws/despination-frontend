@@ -12,7 +12,7 @@ import GoogleMapReact from 'google-map-react'
 import axios from 'axios'
 
 
-// const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
+
 const GMAPS_API_KEY = 'AIzaSyDS2v9oBeTWLdjnaG0ZvVG1gYLxzmlVMGA';
 
 const BASE_URL = 'http://localhost:3000'

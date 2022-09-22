@@ -120,7 +120,7 @@ class MyProfile extends React.Component {
 
         <h2>List of All Planners</h2>
 
-          <ul className='planner-list'>
+          <ul className='planner-container'>
             {this.state.planners.map(planner => { return(
               <div key={planner.id} className="planner-box">
                 <li className='planner-list'>
@@ -133,7 +133,7 @@ class MyProfile extends React.Component {
                 </li>
 
                 <div className="planner-edit-delete">
-                  <button>Edit</button>
+                 
                   <button onClick={() => this.deletePlanner(planner.id)}>Delete</button>
                 </div>
 
