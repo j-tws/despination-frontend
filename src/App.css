@@ -10,7 +10,7 @@ ul{
 
 h1{
   text-align: center;
-  color: black;
+  color: rgb(131, 129, 129);
 }
 
 /*  This is to remove default hyperlink line */
@@ -18,6 +18,15 @@ a:link{
   text-decoration: none;
  
 }
+a.main-title{
+  color: rgb(131, 129, 129);
+}
+
+a.main-title:hover{
+  color: #ffd000;
+}
+
+
 
 .navbar {
   /* border: 1px solid red; */

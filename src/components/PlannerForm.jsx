@@ -40,8 +40,8 @@ class PlannerForm extends React.Component{
   render(){
 
     return (
-      <div>
-        <h2>Create more holidays here!</h2>
+      <div className="planner-form">
+        <h3>Create more holidays here!</h3>
         <form onSubmit={this.handleSubmit}>
           <p>Planner Name</p>
           <input type="text" onChange={this.handleNameInput} placeholder="Planner Name"/>
