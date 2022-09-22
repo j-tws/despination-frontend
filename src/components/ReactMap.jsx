@@ -13,7 +13,7 @@ import axios from 'axios'
 
 
 
-// const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
+
 const GMAPS_API_KEY = 'AIzaSyDS2v9oBeTWLdjnaG0ZvVG1gYLxzmlVMGA';
 
 let BASE_URL;
