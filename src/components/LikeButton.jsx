@@ -53,10 +53,15 @@ class LikeButton extends React.Component {
     return (
       <div>
         <button className="like-button" onClick={this.handleLikeEvent}>
-          {this.state.currentUserLiked ? "❤️🔻" : "❤️🔺"}
+          {this.state.currentUserLiked ? 
+          <input type="image" className="like-button-image"src="https://res.cloudinary.com/dwmvmdhlu/image/upload/v1663822054/DesPination/grey_button_dzmbvr.png" alt="button to like"/>
+          : 
+          <input type="image" className="like-button" src="https://res.cloudinary.com/dwmvmdhlu/image/upload/v1663822054/DesPination/red_button_kr35z2.png" alt="button to remove like"/>}
         </button>
 
-        <p>This attraction has been ❤️ {this.state.likes} times</p>
+        <p>This attraction has been 
+        <input type="image" className="like-button-status" src="https://res.cloudinary.com/dwmvmdhlu/image/upload/v1663822647/DesPination/like_bar_w4ew35.jpg" alt="like status"/>  
+        {this.state.likes} times</p>
 
       </div>
     )
