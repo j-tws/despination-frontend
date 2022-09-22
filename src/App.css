@@ -20,6 +20,7 @@ a:link{
 }
 a.main-title{
   color: rgb(131, 129, 129);
+  transition: 0.3s linear;
 }
 
 a.main-title:hover{
