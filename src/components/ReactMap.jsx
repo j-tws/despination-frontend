@@ -28,8 +28,15 @@ const BASE_URL_DESTINATIONS_LOCATION = `${BASE_URL}/destinations/locations`
 function MyMarker( props ){
   return (
     <div className="mapMarker" onClick={ props.onThisClick }>
-      <p className='mapMarkerText'>{props.name}</p>
-      {/* <div className="details">{props.address}</div> */}
+      <div className="mapMarker-position">
+        <img 
+          className="mapMarker-image" 
+          src={props.image} 
+          alt={props.name} 
+        />
+        <p className='mapMarkerText'>{props.name}</p>
+        {/* <div className="details">{props.address}</div> */}
+      </div>
     </div>
   )
 }
@@ -382,7 +389,7 @@ class ReactMap extends React.Component {
     return (
       <div>
 
-        <h3 className="opening-text">Explore Your World Here!</h3>
+        <h2 className="opening-text">Explore Your World Here!</h2>
 
         <div className="mapContainer">
 
@@ -414,6 +421,7 @@ class ReactMap extends React.Component {
                       <MyMarker 
                         name={destination.name} 
                         key={destination.id} 
+                        image={destination.image}
                         lat={destination.latitude} 
                         lng={destination.longitude} 
                         // address={destination.address} 

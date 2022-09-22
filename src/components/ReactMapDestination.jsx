@@ -25,8 +25,15 @@ if( process.env.NODE_ENV === 'development'){
 function MyMarker( props ){
   return (
     <div className="mapMarkerDes" onClick={ props.onThisClick }>
-      <p className='mapMarkerDesText'>{props.name}</p>
-      <div className="details">{props.address}</div>
+      <div className="mapMarkerDes-position">
+        <img 
+            className="mapMarkerDes-image" 
+            src={props.image} 
+            alt={props.name} 
+          />
+        <p className='mapMarkerDesText'>{props.name}</p>
+        <div className="details">{props.address}</div>
+      </div>
        
     </div>
   )
@@ -371,6 +378,7 @@ class ReactMapDestination extends React.Component{
                     <MyMarker 
                       name={attraction.name} 
                       key={attraction.id} 
+                      image={attraction.image}
                       lat={attraction.latitude} 
                       lng={attraction.longitude} 
                       // address={attraction.address} 

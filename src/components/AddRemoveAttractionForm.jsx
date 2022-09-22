@@ -1,4 +1,5 @@
 import React from 'react'
+import './AddRemoveAttractionForm.css'
 
 
 class AddRemoveAttractionForm extends React.Component {
@@ -32,7 +33,7 @@ class AddRemoveAttractionForm extends React.Component {
       <div>
         <form>
           <label>Choose planner to add:</label>
-          <select name="planners">
+          <select className="attraction-select" name="planners">
             <option selected disabled>Select planner</option>
             {
               this.props.userPlanners.map( (planner) => (
@@ -41,8 +42,8 @@ class AddRemoveAttractionForm extends React.Component {
             }
           </select>
 
-          <button onClick={this.handleAddAttractionSubmit}>Add attraction</button>
-          <button onClick={this.handleRemoveAttractionSubmit}>Remove attraction</button>
+          <button className="attraction-button" onClick={this.handleAddAttractionSubmit}>Add attraction</button>
+          <button className="attraction-button" onClick={this.handleRemoveAttractionSubmit}>Remove attraction</button>
 
         </form>
       </div>

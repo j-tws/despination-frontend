@@ -3,6 +3,12 @@
     text-align: center;
 }
 
+.destination-heading h2 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 15px;
+    margin-bottom: -15px;
+}
+
 .destination-img {
     width: 400px;
     height: 250px;

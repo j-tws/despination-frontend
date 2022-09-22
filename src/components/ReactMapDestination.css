@@ -1,5 +1,5 @@
 .mapContainerDes {
-    width: 90vw;
+    width: 70vw;
     height: 40vw;
     margin: 0 auto; 
 
@@ -8,20 +8,32 @@
 
 
 .mapMarkerDes {
-    background-color: #E87F5B; 
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    position: relative;
+    width: 90px;
     cursor: pointer;
     transition: 0.3s;
 }
 
+.mapMarkerDes-image {
+    position: relative;
+    top: 50%;
+    right: 50%;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    border: 3px solid #e89a5b;
+    object-fit: cover;
+}
+
 .mapMarkerDesText{
-    font-size: 9pt;
-    text-align: right;
-    padding-right: 100px;
-    padding-top: 10px;
-    width: 200px;
+    position: relative;
+    top: 50%;
+    right: 50%;
+    font-size: 12pt;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.534);
+    color: whitesmoke;
+    margin-top: 5px;
 
 }
 
@@ -33,8 +45,8 @@
     display: inline-block;
 }
 
-.mapMarkerDes:hover {
+/* .mapMarkerDes:hover {
     width: 40px;
     height: 40px;
     font-size: 18pt;
-}
+} */

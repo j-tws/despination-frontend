@@ -44,7 +44,7 @@ class DestinationIndex extends React.Component{
     return(
         <div>
           <div className="destination-heading">
-      
+          <h2>Destination List</h2>
           </div>
             {
               this.state.loading

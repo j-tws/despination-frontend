@@ -1,9 +1,9 @@
 .mapContainer {
+    position: relative;
     width: 70vw;
     height: 40vw;
     margin: 0 auto; 
     
-
 }
 
 .mapTitle {
@@ -12,31 +12,46 @@
 }
 
 .mapMarker {
-    background-color: #E87F5B; 
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    /* font-size: 14pt; */
+    /* border: 1px solid red; */
+    position: relative;
+    width: 90px;
     cursor: pointer;
     transition: 0.3s;
+
+}
+
+.mapMarker-position {
+    position: relative;
+}
+
+.mapMarker-image {
+    position: relative;
+    top: 50%;
+    right: 50%;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    border: 3px solid #e89a5b;
+    object-fit: cover;
 }
 
 .mapMarkerText {
+    position: relative;
+    top: 50%;
+    right: 50%;
     font-size: 14pt;
-    text-align: right;
-    padding-right: 100px;
-    padding-top: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.534);
+    color: whitesmoke;
+    margin-top: 5px;
 
 }
-
-
-
 
 .mapMarker .details {
     display: none;
 }
 
-.mapMarker:hover .details{
+/* .mapMarker:hover .details{
     display: inline-block;
 }
 
@@ -44,7 +59,7 @@
     width: 40px;
     height: 40px;
     font-size: 18pt;
-}
+} */
 
 .opening-text {
     font-family: 'Playfair Display', serif;

@@ -157,13 +157,15 @@ class AttractionPage extends React.Component {
       
     return(
       <div className="attraction-page">
-        <h2>{this.state.attraction.name}</h2>
 
         <img 
           className="attraction-main-img" 
           src={this.state.attraction.image} 
           alt={this.state.attraction.name} 
-        />
+          />
+
+        <h1>{this.state.attraction.name}</h1>
+
         <div>
           {/* this state.current user is async, while axios is processing, give me null until the data is loaded back then give me currentUser.id */}
           {this.state.attraction.id && this.state.currentUser
@@ -182,8 +184,6 @@ class AttractionPage extends React.Component {
 
         <p className="attraction-description">{this.state.attraction.description}</p>
 
-        <p><strong>Address:</strong>{this.state.attraction.address}</p>
-
         {
           this.state.currentUser !== null
             ?
@@ -194,7 +194,7 @@ class AttractionPage extends React.Component {
                   addAttraction={this.postAttraction} 
                   removeAttraction={this.deleteAttraction} 
                 />
-                <p>{this.state.addRemoveAttractionResponse}</p>
+                <p className="attraction-response">{this.state.addRemoveAttractionResponse}</p>
               </div>
             )
             :
@@ -203,52 +203,58 @@ class AttractionPage extends React.Component {
             )
         }
 
-        <div>
+        <div className="attraction-events">
         {
           this.state.attractionEvents.length !== 0
             ?
             (
               <div>
                 <h2>What's happening here?</h2>
-                {
-                this.state.attractionEvents.map( (event) => (
-                  <div key={event.id} className="all-events">
-                    <img src={event.image} alt={event.name} />
-                    <h3>{event.name}</h3>
-                    <p><strong>{event.time}</strong></p>
-                    <p>{event.description}</p>
+                <div className="attraction-event-grid">
+                  {
+                  this.state.attractionEvents.map( (event) => (
+                    <div key={event.id} className="attraction-event-box">
+                      <img src={event.image} alt={event.name} />
+                      <div className="attraction-event-description">
+                        <h4>{event.name}</h4>
+                        <p><strong>{Date(event.time)}</strong>
+                        <br />
+                        {event.description}</p>
+                      
 
-                    {
-                    this.state.currentUser !== null
-                      ?
-                      (
-                        <div>
-                          <AddRemoveEventForm 
-                            // userPlanners={this.props.user.planners}
-                            userPlanners={this.state.currentUserPlanners} 
-                            eventId = {event.id}
-                            addEvent={this.postEvent}
-                            removeEvent={this.deleteEvent}
-                        
-                          />
-                          <p>{this.state.addRemoveEventResponse}</p>
-                        </div>
-                      )
-                      :
-                      (
-                        <div></div>
-                      )
+                      {
+                      this.state.currentUser !== null
+                        ?
+                        (
+                          <div>
+                            <AddRemoveEventForm 
+                              // userPlanners={this.props.user.planners}
+                              userPlanners={this.state.currentUserPlanners} 
+                              eventId = {event.id}
+                              addEvent={this.postEvent}
+                              removeEvent={this.deleteEvent}
+                          
+                            />
+                            <p>{this.state.addRemoveEventResponse}</p>
+                          </div>
+                        )
+                        :
+                        (
+                          <div></div>
+                        )
+                      }
+                      </div>
+
+                    </div>
+                  ))
                   }
-
-                  </div>
-                ))
-                }
+              </div>
               </div>
         
             )
             :
             (
-              <h2>No events planned for now.</h2>
+              <h2>No events planned here for now.</h2>
             )
         }
         </div>
