@@ -15,6 +15,7 @@ import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
 import PlannerForm from './components/PlannerForm';
 import Button from 'react-bootstrap/Button';
+import ReactMapDestination from './components/ReactMapDestination';
 // import Demo from './Demo';
 
 
@@ -95,7 +96,7 @@ class App extends React.Component {
               this.state.currentUser
                 ?
                 (
-                  
+
                   <ul>
                     <li>Welcome {this.state.currentUser.name}</li>
                     <li><Link to='/profile'>My Profile</Link></li>
@@ -114,9 +115,6 @@ class App extends React.Component {
             }
 
           </nav>
-
-
-          <h1> <Link to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
 
 
 
@@ -155,6 +153,8 @@ class App extends React.Component {
         /> */}
 
         <Route exact path='/destinations/:id' component={DestinationPage} />
+
+        {/* <Route exact path='/destinations/:id' component={ReactMapDestination} /> */}
 
         <Route exact path='/attractions/:id' component={AttractionPage} />
 

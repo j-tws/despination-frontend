@@ -10,11 +10,18 @@
 .mapMarkerDes {
     background-color: #E87F5B; 
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-size: 14pt;
+    width: 35px;
+    height: 35px;
+    font-size:8pt;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.mapMarkerDesText{
+    margin-bottom: 0px;
+    padding-top: 50px;
+    padding-right: 55px;
+
 }
 
 .mapMarkerDes .details {

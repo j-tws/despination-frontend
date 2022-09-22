@@ -22,7 +22,7 @@ function MyMarker( props ){
   return (
     <div className="mapMarker" onClick={ props.onThisClick }>
       <p className='mapMarkerText'>{props.name}</p>
-      {/* <div className="details">{props.address}</div> */}
+      {/* <div className="mapMarkerImage">{props.image}</div> */}
     </div>
   )
 }
@@ -374,7 +374,7 @@ class ReactMap extends React.Component {
 
     return (
       <div>
-        {/* <h1 className="mapTitle">DesPination</h1> */}
+       
           
         <div className="mapContainer">
 
@@ -407,7 +407,8 @@ class ReactMap extends React.Component {
                         name={destination.name} 
                         key={destination.id} 
                         lat={destination.latitude} 
-                        lng={destination.longitude} 
+                        lng={destination.longitude}
+                        img={destination.image} 
                         // address={destination.address} 
                         onThisClick={ () => this.handleMarkerClick(destination.id) }
                       />

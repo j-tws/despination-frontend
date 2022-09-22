@@ -194,7 +194,8 @@ class DestinationPage extends React.Component {
               ))
             }
           </div>
-            < ReactMapDestination destinationId={this.props.match.params.id}/> 
+          <Route  render={(props) => <ReactMapDestination  destinationId={this.props.match.params.id}/>} />
+            {/* < ReactMapDestination destinationId={this.props.match.params.id}/>  */}
 
       </div>
       )
