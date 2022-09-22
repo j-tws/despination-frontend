@@ -37,26 +37,19 @@
     width: 500px;
 }
 
-.attraction-img {
+/* .attraction-img {
     width: 400px;
     height: 250px;
     object-fit: cover;
-}
+} */
 
-.attraction-list {
+/* .attraction-list {
     display: inline-block;
     margin: 0 10px;
-}
+} */
 
 .destination-event-grid {
     display: flex;
-}
-
-.destination-event-box {
-    width: 300px;
-    border: 1px solid red;
-    display: inline-block;
-    margin: 10px 20px;
 }
 
 .destination-event-box img {
@@ -78,6 +71,70 @@
     object-fit: cover;
 } */
 
-.historical-carousel {
+
+.carousel {
     width: 50vw;
+    margin: 0 auto;
+    border: 5px solid rgb(208, 208, 208)
 }
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.552);
+    padding-top: -30px;
+}
+
+.carousel-caption h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+.carousel img {
+    width: 50vw;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.destination-event-grid {
+    display: grid;
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+    /* border: 1px solid red; */
+    
+}
+
+.destination-event-box {
+    position: relative;
+    text-align: left;
+    display: inline-block;
+    margin: 0 auto;
+    width: 75vw;
+}
+
+.destination-event-box img{
+    width: 15vw;
+    height: 9vw;
+    object-fit: cover;
+    position: relative;
+    bottom: 25%;
+    margin: auto;
+}
+
+.event-description h4 {
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    margin-top: 20px;
+    /* border: 1px solid red; */
+    display: inline-block;
+}
+
+.event-description {
+    display: inline-block;
+    width: 50vw;
+    margin-left: 20px;
+    /* border: 1px solid red; */
+
+}
+
+
+
+

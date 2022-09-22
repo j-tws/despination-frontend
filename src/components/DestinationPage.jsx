@@ -147,59 +147,65 @@ class DestinationPage extends React.Component {
             ))
           }
         </ul> */}
-        <Carousel className="historical-carousel" interval={null}>
+        <Carousel interval={null}>
           {
-    
               this.state.historicalAttractions.map( (attraction) => (
-              <Carousel.Item>
-                <img 
-                  className="d-block w-100" 
-                  src={attraction.image} 
-                  alt={attraction.name} 
-                />
-              </Carousel.Item>
+                <Carousel.Item key={attraction.id}>
+                  <Link to={`/attractions/${attraction.id}`}>
+                    <img 
+                      className="d-block w-100" 
+                      src={attraction.image} 
+                      alt={attraction.name} 
+                    />
+                  </Link>
+                  <Carousel.Caption>
+                    <h4>{attraction.name}</h4>
+                  </Carousel.Caption>
+                </Carousel.Item>
             ))
-            
           }
         </Carousel>
 
 
         <h3>Landscape and Nature</h3>
-        <ul>
+        <Carousel interval={null}>
           {
-            this.state.natureAttractions.map( (attraction) => (
-
-              <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
-                <li className="attraction-list">
-                  <img 
-                    className="attraction-img" 
-                    src={attraction.image} 
-                    alt={attraction.name} 
-                  />
-                  <p>{attraction.name}</p>
-                </li>
-              </Link>
+              this.state.natureAttractions.map( (attraction) => (
+                <Carousel.Item key={attraction.id}>
+                  <Link to={`/attractions/${attraction.id}`}>
+                    <img 
+                      className="d-block w-100" 
+                      src={attraction.image} 
+                      alt={attraction.name} 
+                    />
+                  </Link>
+                  <Carousel.Caption>
+                    <h4>{attraction.name}</h4>
+                  </Carousel.Caption>
+                </Carousel.Item>
             ))
           }
-        </ul>
+        </Carousel>
 
         <h3>Eateries</h3>
-        <ul>
+        <Carousel interval={null}>
           {
-            this.state.eateryAttractions.map( (attraction) => (
-              <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
-                <li className="attraction-list">
-                  <img 
-                    className="attraction-img" 
-                    src={attraction.image} 
-                    alt={attraction.name} 
-                  />
-                  <p>{attraction.name}</p>
-                </li>
-              </Link>
+              this.state.eateryAttractions.map( (attraction) => (
+                <Carousel.Item key={attraction.id}>
+                  <Link to={`/attractions/${attraction.id}`}>
+                    <img 
+                      className="d-block w-100" 
+                      src={attraction.image} 
+                      alt={attraction.name} 
+                    />
+                  </Link>
+                  <Carousel.Caption>
+                    <h4>{attraction.name}</h4>
+                  </Carousel.Caption>
+                </Carousel.Item>
             ))
           }
-        </ul>
+        </Carousel>
 
         <h2>All events happening in this city</h2>
           <div className="destination-event-grid">
@@ -207,9 +213,12 @@ class DestinationPage extends React.Component {
               this.state.allEvents.map( (event) => (
                 <div key={event.id} className="destination-event-box">
                   <img src={event.image} alt={event.name} />
-                  <h3>{event.name}</h3>
-                  <p><strong>{event.time}</strong></p>
-                  <p>{event.description}</p>
+                  <div className="event-description">
+                    <h4>{event.name}</h4>
+                    <p><strong>{Date(event.time)}</strong>
+                    <br />
+                    {event.description}</p>
+                  
 
                   {
                     this.state.currentUser !== null
@@ -232,7 +241,7 @@ class DestinationPage extends React.Component {
                         <div></div>
                       )
                   }
-
+                  </div>
                 </div>
               ))
             }
