@@ -27,10 +27,9 @@ class App extends React.Component {
     currentUser: undefined,
     // destinations: [],
 
-
-
     loading: true,
-    error: null
+    error: null,
+
   }
 
   // function to run on component mounting
@@ -115,6 +114,13 @@ class App extends React.Component {
             }
 
           </nav>
+
+
+          <h1> <Link to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
+
+
+
+
         </header>
 
         <Route exact path='/' component={ReactMap} />
