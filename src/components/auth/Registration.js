@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import React from 'react'; // why it cant be this?
 import axios from 'axios';
+import './Registration.css';
 
 
 export default class Registration extends Component {
@@ -57,8 +58,9 @@ export default class Registration extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-
+                <form onSubmit={this.handleSubmit} className="registration-container">
+                    <label>Sign Up Form</label>
+                    <br />
                     <input
                         type="name"
                         name="name"
@@ -67,7 +69,7 @@ export default class Registration extends Component {
                         onChange={this.handleChange}
                         required //making sure field form is inserted
                     />
-
+                    <br />
                     <input
                         type="email"
                         name="email"
@@ -76,7 +78,7 @@ export default class Registration extends Component {
                         onChange={this.handleChange}
                         required
                     />
-
+                    <br />
                     <input
                         type="password"
                         name="password"
@@ -85,7 +87,7 @@ export default class Registration extends Component {
                         onChange={this.handleChange}
                         required
                     />
-
+                    <br />
 
                     <button type="submit"> Register </button>
 

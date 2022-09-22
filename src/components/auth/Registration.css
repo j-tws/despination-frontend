@@ -1,0 +1,44 @@
+
+
+.registration-container label{
+    border-bottom: 3px solid rgb(228, 228, 228);
+    font-family: 'Playfair Display', serif;
+    font-size: 25pt;
+    padding: 10px 10px;
+    margin: 30px auto;
+    width: 500px;
+    color: rgb(117, 116, 116);
+}
+
+.registration-container form{
+    margin-bottom: 50px;
+
+}
+
+.registration-container input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.registration-container button{
+    width: 80px;
+    color: black;
+    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 5px;
+    background: rgb(228, 228, 228);
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: 2px 3px 8px 2px  rgb(202, 202, 202);
+    margin: 10px;
+    
+}
+
+.registration-container button:hover {
+    background: #fdce00;
+    cursor: pointer;
+}
