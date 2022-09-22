@@ -20,7 +20,7 @@ let BASE_URL;
 if( process.env.NODE_ENV === 'development'){
   BASE_URL = 'http://localhost:3000';
 } else {
-  BASE_URL = 'http://despination.herokuapp.com';
+  BASE_URL = 'https://despination.herokuapp.com';
 }
 
 const BASE_URL_DESTINATIONS_LOCATION = `${BASE_URL}/destinations/locations`
