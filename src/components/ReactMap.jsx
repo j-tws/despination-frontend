@@ -30,11 +30,11 @@ function MyMarker( props ){
 // Return map bounds based on list of places
 const getMapBounds = (map, maps, places) => {
   const bounds = new maps.LatLngBounds();
-
+  console.log('places:', places);
   places.forEach((place) => {
     bounds.extend(new maps.LatLng(
-      place.geometry.location.lat,
-      place.geometry.location.lng,
+      place.latitude,
+      place.longitude,
     ));
   });
   return bounds;
@@ -378,44 +378,53 @@ class ReactMap extends React.Component {
           
         <div className="mapContainer">
 
-          <GoogleMapReact
-            onClick={ this.handleMapClick }
-            bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            center={ {lat: 2, lng:28} }
-            zoom={ 1 }
-            options={{styles: mapOptions}} // this for the customised google map
-            yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, this.state.destinations)}
-          >
-            {/* can wrap component around a div */}
-            {/*
-            <MyMarker lat={-20.7536} lng={101.2886} />
-            <MyMarker lat={-18.7536} lng={121.2886} />
-            */}
+          {
+            this.state.loading
+            ?
+            (
+              <p>Loading Map...</p>
+            )
+            :
+            (
+              <GoogleMapReact
+                onClick={ this.handleMapClick }
+                bootstrapURLKeys={ {key: GMAPS_API_KEY } }
+                center={ {lat: 2, lng:28} }
+                zoom={ 1 }
+                options={{styles: mapOptions}} // this for the customised google map
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, this.state.destinations)}
+              >
+                {/* can wrap component around a div */}
+                {/*
+                <MyMarker lat={-20.7536} lng={101.2886} />
+                <MyMarker lat={-18.7536} lng={121.2886} />
+                */}
 
-            {
-              this.state.destinations.map( destination => (
-                  <MyMarker 
-                    name={destination.name} 
-                    key={destination.id} 
-                    lat={destination.latitude} 
-                    lng={destination.longitude} 
-                    // address={destination.address} 
-                    onThisClick={ () => this.handleMarkerClick(destination.id) }
-                  />
-              ))
-            }
+                {
+                  this.state.destinations.map( destination => (
+                      <MyMarker 
+                        name={destination.name} 
+                        key={destination.id} 
+                        lat={destination.latitude} 
+                        lng={destination.longitude} 
+                        // address={destination.address} 
+                        onThisClick={ () => this.handleMarkerClick(destination.id) }
+                      />
+                  ))
+                }
 
-            {/* 
-              If you create your own component tags here, and they have lat and lng props, then they will be rendered on this map! Exactly how they look depends on what tags the component renders
-            */}
+                {/* 
+                  If you create your own component tags here, and they have lat and lng props, then they will be rendered on this map! Exactly how they look depends on what tags the component renders
+                */}
 
 
-          </GoogleMapReact>
+              </GoogleMapReact>
+
+            )
+          }
 
         </div>
-          
-          
       </div>
     )
 

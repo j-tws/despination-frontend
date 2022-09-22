@@ -31,11 +31,11 @@ function MyMarker( props ){
 // Return map bounds based on list of places
 const getMapBounds = (map, maps, places) => {
   const bounds = new maps.LatLngBounds();
-
+  console.log('places:', places);
   places.forEach((place) => {
     bounds.extend(new maps.LatLng(
-      place.geometry.location.lat,
-      place.geometry.location.lng,
+      place.latitude,
+      place.longitude,
     ));
   });
   return bounds;
@@ -59,7 +59,6 @@ const apiIsLoaded = (map, maps, places) => {
   // Bind the resize listener
   bindResizeListener(map, maps, bounds);
 };
-
 
 
 class ReactMapDestination extends React.Component{
@@ -98,8 +97,8 @@ class ReactMapDestination extends React.Component{
         this.setState({ 
             // destination: res.data.destination,
             // address: res.data.destination.address,
-            attractions: res.data.destination.attractions
-            
+            attractions: res.data.destination.attractions,
+            loading: false
         })
 
         }catch(err){
@@ -392,38 +391,48 @@ class ReactMapDestination extends React.Component{
           
         <div className="mapContainer">
 
-          <GoogleMapReact
-            onClick={ this.handleMapClick }
-            bootstrapURLKeys={ {key: GMAPS_API_KEY } }
-            center={ {lat: 2, lng:28} }
-            zoom={ 2 }
-            options={{styles: mapOptions}} // this for the customised google map
-            yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, this.state.destinations)}
-          >
+          {
+            this.state.loading
+            ?
+            (
+              <p>Loading Map...</p>
+            )
+            :
+            (
+              <GoogleMapReact
+                onClick={ this.handleMapClick }
+                bootstrapURLKeys={ {key: GMAPS_API_KEY } }
+                center={ {lat: 2, lng:28} }
+                zoom={ 2 }
+                options={{styles: mapOptions}} // this for the customised google map
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, this.state.attractions)}
+              >
 
-            {
-              this.state.attractions.map( attraction => (
-                  <MyMarker 
-                    name={attraction.name} 
-                    key={attraction.id} 
-                    lat={attraction.latitude} 
-                    lng={attraction.longitude} 
-                    // address={attraction.address} 
-                    onThisClick={ () => this.handleMarkerClick(attraction.id) }
-                  />
-              ))
-            }
+                {
+                  this.state.attractions.map( attraction => (
+                    <MyMarker 
+                      name={attraction.name} 
+                      key={attraction.id} 
+                      lat={attraction.latitude} 
+                      lng={attraction.longitude} 
+                      // address={attraction.address} 
+                      onThisClick={ () => this.handleMarkerClick(attraction.id) }
+                    />
+                  ))
+                }
 
-            {/* 
-              If you create your own component tags here, and they have lat and lng props, then they will be rendered on this map! Exactly how they look depends on what tags the component renders
-            */}
+                {/* 
+                  If you create your own component tags here, and they have lat and lng props, then they will be rendered on this map! Exactly how they look depends on what tags the component renders
+                */}
 
 
-          </GoogleMapReact>
+              </GoogleMapReact>
+
+            )
+          }
 
         </div>
-          
           
       </div>
     )
