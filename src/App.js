@@ -85,15 +85,19 @@ class App extends React.Component {
     return (
       <Router>
 
-        <header>
-          <nav>
+        <header className="home-header">
+
+          <h1> <Link to='/'>desPination</Link> </h1>
+
+          <nav className="navbar">
             {/* Show one of two nav bars depending on if the user is logged in */}
             {
               this.state.currentUser
                 ?
                 (
+                  
                   <ul>
-                    <li>Welcome {this.state.currentUser.name} | </li>
+                    <li>Welcome {this.state.currentUser.name}</li>
                     <li><Link to='/profile'>My Profile</Link></li>
                     <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
                     <li><Link to='/destinations'>Destinations</Link></li>
@@ -119,8 +123,6 @@ class App extends React.Component {
 
         </header>
 
-        {/* Gmap is commented out for now as it is distracting */}
-
         <Route exact path='/' component={ReactMap} />
 
         <Route
@@ -143,14 +145,9 @@ class App extends React.Component {
             )
         }
 
-
-
-
         <Route exact path='/destinations' component={DestinationIndex} />
 
         <Route exact path='/registration' component={Registration} />
-
-
 
         {/* keep the route route. dont delete */}
         {/* <Route exact path='/destinations/:id'
@@ -164,7 +161,6 @@ class App extends React.Component {
         <Route exact path='/planners/:id' component={PlannerPage} />
 
         {/* <Route exact path='/demo' component={Demo} /> */}
-
 
 
       </Router>

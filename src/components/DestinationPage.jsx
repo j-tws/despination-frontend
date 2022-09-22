@@ -120,8 +120,8 @@ class DestinationPage extends React.Component {
           {
             this.state.historicalAttractions.map( (attraction) => (
               
-              <Link to={`/attractions/${attraction.id}`}>
-                <li key={attraction.id} className="attraction-list">
+              <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
+                <li className="attraction-list">
                   <img className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
@@ -134,10 +134,9 @@ class DestinationPage extends React.Component {
         <ul>
           {
             this.state.natureAttractions.map( (attraction) => (
-              
-              <Link to={`/attractions/${attraction.id}`}>
-                <li key={attraction.id} className="attraction-list">
-                  <img className="attraction-img" src={attraction.image} alt={attraction.name} />
+              <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
+                <li className="attraction-list">
+                  <image className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
               </Link>
@@ -149,9 +148,8 @@ class DestinationPage extends React.Component {
         <ul>
           {
             this.state.eateryAttractions.map( (attraction) => (
-              
-              <Link to={`/attractions/${attraction.id}`}>
-                <li key={attraction.id} className="attraction-list">
+              <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
+                <li className="attraction-list">
                   <img className="attraction-img" src={attraction.image} alt={attraction.name} />
                   <p>{attraction.name}</p>
                 </li>
@@ -164,7 +162,7 @@ class DestinationPage extends React.Component {
           <div className="destination-event-grid">
             {
               this.state.allEvents.map( (event) => (
-                <div className="destination-event-box">
+                <div key={event.id} className="destination-event-box">
                   <img src={event.image} alt={event.name} />
                   <h3>{event.name}</h3>
                   <p><strong>{event.time}</strong></p>

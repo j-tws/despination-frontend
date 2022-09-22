@@ -112,28 +112,19 @@ class MyProfile extends React.Component {
 
     return (
       <div>
-        <Router>
 
         <h1>Welcome back, {this.state.currentUser.name}!</h1>
-        {/* <h3>Your email is {this.state.currentUser.email}</h3> */}
 
         <PlannerForm submitForm={this.postPlanner}/>
         <p>{this.state.plannerFormResponse}</p>
-
-        {/* <Link to="/profile/create_planner">Create new Planner</Link>
-
-        <Route
-          exact path='/profile/create_planner'
-          render={(props) => <PlannerForm user={this.state.currentUser} {...props} />}
-        /> */}
 
 
         <h2>List of All Planners</h2>
 
           <ul className='planner-list'>
             {this.state.planners.map(planner => { return(
-              <div className="planner-box">
-                <li key={planner.id}>
+              <div key={planner.id} className="planner-box">
+                <li>
                   <Link to= {`/planners/${planner.id}`}>
                     <img src={planner.image} className="profile-img" alt={planner.name} />
                     <h3 className="planner-name">{planner.name}</h3>
@@ -152,7 +143,7 @@ class MyProfile extends React.Component {
             )})}
           </ul>
 
-        </Router>
+        
       </div>
 
     )

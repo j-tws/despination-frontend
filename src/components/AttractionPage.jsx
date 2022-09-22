@@ -208,7 +208,7 @@ class AttractionPage extends React.Component {
                 <h2>What's happening here?</h2>
                 {
                 this.state.attractionEvents.map( (event) => (
-                  <div className="all-events">
+                  <div key={event.id} className="all-events">
                     <img src={event.image} alt={event.name} />
                     <h3>{event.name}</h3>
                     <p><strong>{event.time}</strong></p>
