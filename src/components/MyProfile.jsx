@@ -111,10 +111,10 @@ class MyProfile extends React.Component {
   render() {
 
     return (
-      <div>
-
+      <div className="profile-page">
+       
         <h1>Welcome back, {this.state.currentUser.name}!</h1>
-
+      
         <PlannerForm submitForm={this.postPlanner}/>
         <p>{this.state.plannerFormResponse}</p>
 
@@ -124,7 +124,7 @@ class MyProfile extends React.Component {
           <ul className='planner-list'>
             {this.state.planners.map(planner => { return(
               <div key={planner.id} className="planner-box">
-                <li>
+                <li className='planner-list'>
                   <Link to= {`/planners/${planner.id}`}>
                     <img src={planner.image} className="profile-img" alt={planner.name} />
                     <h3 className="planner-name">{planner.name}</h3>
