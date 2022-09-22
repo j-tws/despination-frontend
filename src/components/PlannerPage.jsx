@@ -36,9 +36,14 @@ class PlannerPage extends React.Component {
   }
 
   fetchAttractions = (id) => {
+    let token = "Bearer " + localStorage.getItem("jwt")
     const url = `${BASE_URL}/planners/${id}`
     console.log(url);
-    axios.get(url)
+    axios.get(url,{
+        headers: {
+            'Authorization': token
+        }
+    })
     .then( res => {
       console.log('getting data from planner', res.data)
       console.log('getting data from attractions', res.data.attractions)
@@ -77,12 +82,12 @@ class PlannerPage extends React.Component {
   render(){
 
     return (
-      <div>
+      <div className='planner-page'>
         <div className="planning-heading">
           <h2> {this.state.planner.name} </h2>
           <p> last update: {this.state.planner.updated_at} </p>
         </div>
-        <ul>
+        <ul className="attractions-container">
           <h2>Attractions</h2>
             {this.state.attractions.map(attraction => { return(
               <li key={attraction.id} className="attracts-list">
@@ -91,25 +96,24 @@ class PlannerPage extends React.Component {
                   src={attraction.image} className="attracts-events-img"
                   alt={attraction.name}
                 />
+                <div className="attracts-events-name">{attraction.name}</div>
                 </Link>
-                <br />
-                <h3>{attraction.name}</h3>
-                <p>{attraction.address}</p>
+                
                 
               </li>
 
             )})}
         </ul>
         
-          <ul>
-            <h2> What's the buzz in town! </h2>
+          <h2> Upcoming events! </h2>
+          <ul className="events-container">
               {this.state.events.map(events => { return(
                 <li key={events.id} className="events-list">
                   <img 
                     src={events.image} className="attracts-events-img"
                     alt={events.name}
                   />
-                  <br />
+                  
                   <h3>{events.name}</h3>
                   <p>{events.location}</p>
                   <p>{events.description}</p>

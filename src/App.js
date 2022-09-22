@@ -83,94 +83,94 @@ class App extends React.Component {
 
     return (
       <div className="home-page">
-      <Router>
+        <Router>
 
-        <header className="home-header">
+          <header className="home-header">
 
-        <h1><Link className="main-title" to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
+            <h1><Link className="main-title" to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
 
-          <nav className="navbar">
-            {/* Show one of two nav bars depending on if the user is logged in */}
-            {
-              this.state.currentUser
-                ?
-                (
-                  
-                  <ul>
-                    <li className="welcome-text">Welcome {this.state.currentUser.name}</li>
-                    <li><Link className="link-font" to='/profile'>My Profile</Link></li>
-                    <li><Link className="link-font" onClick={this.handleLogout} to='/'>Logout</Link></li>
-              
-                  </ul>
-                )
-                :
-                (
-                  <ul>
-                    <li><Link className="link-font" to='/login'>Login</Link></li>
-                    <li><Link className="link-font" to='/registration'>Sign Up</Link></li>
-                  </ul>
-                )
-            }
+            <nav className="navbar">
+              {/* Show one of two nav bars depending on if the user is logged in */}
+              {
+                this.state.currentUser
+                  ?
+                  (
 
-          </nav>
+                    <ul>
+                      <li className="welcome-text">Welcome {this.state.currentUser.name}</li>
+                      <li><Link className="link-font" to='/profile'>My Profile</Link></li>
+                      <li><Link className="link-font" onClick={this.handleLogout} to='/'>Logout</Link></li>
 
-          
+                    </ul>
+                  )
+                  :
+                  (
+                    <ul>
+                      <li><Link className="link-font" to='/login'>Login</Link></li>
+                      <li><Link className="link-font" to='/registration'>Sign Up</Link></li>
+                    </ul>
+                  )
+              }
+
+            </nav>
 
 
 
 
-        </header>
 
-        
 
-        <Route exact path='/' component={ReactMap} />
+          </header>
 
-        <Route exact path='/' component={DestinationIndex} />
 
-        <Route
-          exact path='/login'
-          render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
-        />
 
-        {
-          this.state.currentUser !== undefined
-            ?
-            (
-              <Route
-                exact path='/profile'
-                render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
-              />
-            )
-            :
-            (
-              <h3>You need to sign up / log in to access this feature.</h3>
-            )
-        }
+          <Route exact path='/' component={ReactMap} />
 
-        {/* <Route exact path='/destinations' component={DestinationIndex} /> */}
+          <Route exact path='/' component={DestinationIndex} />
 
-        <Route exact path='/registration' component={Registration} />
+          <Route
+            exact path='/login'
+            render={(props) => <Login setCurrentUser={this.setCurrentUser} {...props} />} // function render props
+          />
 
-        {/* keep the route route. dont delete */}
-        {/* <Route exact path='/destinations/:id'
+          {
+            this.state.currentUser !== undefined
+              ?
+              (
+                <Route
+                  exact path='/profile'
+                  render={(props) => <MyProfile user={this.state.currentUser} {...props} />}
+                />
+              )
+              :
+              (
+                <p>You need to sign up / log in to access this feature.</p>
+              )
+          }
+
+          {/* <Route exact path='/destinations' component={DestinationIndex} /> */}
+
+          <Route exact path='/registration' component={Registration} />
+
+          {/* keep the route route. dont delete */}
+          {/* <Route exact path='/destinations/:id'
           render={(props) => <DestinationPage user={this.state.currentUser} {...props} />}
         /> */}
 
-        <Route exact path='/destinations/:id' component={DestinationPage} />
+          <Route exact path='/destinations/:id' component={DestinationPage} />
 
-        <Route exact path='/attractions/:id' component={AttractionPage} />
+          <Route exact path='/attractions/:id' component={AttractionPage} />
 
-        <Route exact path='/planners/:id' component={PlannerPage} />
+          <Route exact path='/planners/:id' component={PlannerPage} />
 
-        {/* <Route exact path='/demo' component={Demo} /> */}
+          {/* <Route exact path='/demo' component={Demo} /> */}
 
-        <hr />
-      <footer>
-        &copy; Too-Broke-To-Travel Pty Ltd.
-      </footer>
+          <hr />
+          <footer>
+            &copy; Too-Broke-To-Travel Pty Ltd.
+          </footer>
 
 
-      </Router>
+        </Router>
       </div>
     )
 
