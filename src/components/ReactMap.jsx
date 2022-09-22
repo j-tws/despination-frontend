@@ -16,7 +16,14 @@ import axios from 'axios'
 // const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
 const GMAPS_API_KEY = 'AIzaSyDS2v9oBeTWLdjnaG0ZvVG1gYLxzmlVMGA';
 
-const BASE_URL_DESTINATIONS_LOCATION = 'http://localhost:3000/destinations/locations'
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'http://despination.herokuapp.com';
+}
+
+const BASE_URL_DESTINATIONS_LOCATION = `${BASE_URL}/destinations/locations`
 
 function MyMarker( props ){
   return (

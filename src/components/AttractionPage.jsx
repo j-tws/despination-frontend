@@ -5,7 +5,12 @@ import AddRemoveAttractionForm from './AddRemoveAttractionForm';
 import AddRemoveEventForm from './AddRemoveEventForm';
 import LikeButton from './LikeButton';
 
-const BASE_URL = 'http://localhost:3000'
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'http://despination.herokuapp.com';
+}
 
 class AttractionPage extends React.Component {
 
@@ -57,7 +62,7 @@ class AttractionPage extends React.Component {
 
       console.log('response data:', res.data );
       // console.log('attraction events:', res.data.events);
-      const usersThatLikedAttraction = res.data.users.map(user => user.id)
+      res.data.users.map(user => user.id)
       this.setState({
         attraction: res.data,
         attractionEvents: res.data.events,
