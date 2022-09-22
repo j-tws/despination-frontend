@@ -21,8 +21,9 @@ const BASE_URL = 'http://localhost:3000'
 function MyMarker( props ){
   return (
     <div className="mapMarkerDes" onClick={ props.onThisClick }>
-      {props.name}
+      <p className='mapMarkerDesText'>{props.name}</p>
       <div className="details">{props.address}</div>
+       
     </div>
   )
 }
