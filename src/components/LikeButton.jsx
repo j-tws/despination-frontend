@@ -1,5 +1,4 @@
 import React from "react";
-import { isCompositeComponent } from "react-dom/test-utils";
 // import Heart from "react-animated-heart"
 import axios from "axios";
 import './LikeButton.css'

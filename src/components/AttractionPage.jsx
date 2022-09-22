@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import './AttractionPage.css'
 import AddRemoveAttractionForm from './AddRemoveAttractionForm';
 import AddRemoveEventForm from './AddRemoveEventForm';

@@ -1,9 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Route, Link, HashRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MyProfile.css';
 import PlannerForm from './PlannerForm';
-import Form from 'react-bootstrap';
 
 
 const BASE_URL = 'http://localhost:3000'
@@ -95,7 +94,7 @@ class MyProfile extends React.Component {
       const res = await axios.delete(`${BASE_URL}/planners/${id}`)
       console.log(`response:`,res.data.object);
       
-      const remainingPlanners = this.state.planners.filter( planner => planner.id != id)
+      const remainingPlanners = this.state.planners.filter( planner => planner.id !== id)
 
       this.setState({planners: remainingPlanners})
 

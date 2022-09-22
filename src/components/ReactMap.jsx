@@ -10,7 +10,7 @@ import './ReactMap.css'
 // we generally need to find a 'react wrapper' or React version of that library so that React + library are not fighting over the DOM
 import GoogleMapReact from 'google-map-react'
 import axios from 'axios'
-import { Route, HashRouter as Router, Link } from 'react-router-dom';
+
 
 
 // const GMAPS_API_KEY = 'AIzaSyCl101Dkuw6zqcwqVETjEYyt5HgATs2WwU';
