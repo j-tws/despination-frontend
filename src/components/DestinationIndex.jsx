@@ -39,20 +39,20 @@ class DestinationIndex extends React.Component{
     return(
         <div>
           <div className="destination-heading">
-            <h2> Major destinations to explore </h2>
+      
           </div>
             {
               this.state.loading
               ?
               <p> Loading...</p>
               :
-              <ul>
+              <ul className="destination-container">
               { this.state.destinations.map( destination => { return(
                 <li key={destination.id} className="destination-list"> 
-                  <Link to={`/destinations/${destination.id}`}>
+                  <Link className="link-styles" to={`/destinations/${destination.id}`}>
                     <img src={destination.image} className="destination-img"/>
+                    <div className="destination-name">{destination.name}</div>
                   </Link>
-                  <h3>{destination.name}</h3>
                 </li>
               ) })}
               </ul>

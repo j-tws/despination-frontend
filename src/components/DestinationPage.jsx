@@ -34,7 +34,7 @@ class DestinationPage extends React.Component {
       // console.log('destination data:', res.data);
       // console.log('destinations details:', res.data.destination);
       // console.log('attraction categories:', res.data.attraction_categories);
-      // console.log('historical categories:', res.data.attraction_categories.Historical);
+      console.log('historical categories:', res.data.attraction_categories.Nature);
       this.setState({
         destination: res.data.destination,
         historicalAttractions: res.data.attraction_categories.Historical,
@@ -110,9 +110,17 @@ class DestinationPage extends React.Component {
 
     return (
       <div className="destination-page">
-        <img src={this.state.destination.image} alt={`${this.state.destination.name}`} className="main-image"/>
-        <h1>{this.state.destination.name}</h1>
-        <p>{this.state.destination.description}</p>
+        <Router>
+          
+        
+
+        <img 
+          src={this.state.destination.image} 
+          alt={`${this.state.destination.name}`} className="main-image"
+          />
+          <h1>{this.state.destination.name}</h1>
+
+        <p className="destination-description">"{this.state.destination.description}"</p>
 
         <h2>Attractions</h2>
         <h3>Historical and Cultural</h3>
@@ -122,7 +130,11 @@ class DestinationPage extends React.Component {
               
               <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
                 <li className="attraction-list">
-                  <img className="attraction-img" src={attraction.image} alt={attraction.name} />
+                  <img 
+                    className="attraction-img" 
+                    src={attraction.image} 
+                    alt={attraction.name} 
+                  />
                   <p>{attraction.name}</p>
                 </li>
               </Link>
@@ -134,9 +146,14 @@ class DestinationPage extends React.Component {
         <ul>
           {
             this.state.natureAttractions.map( (attraction) => (
+
               <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
                 <li className="attraction-list">
-                  <image className="attraction-img" src={attraction.image} alt={attraction.name} />
+                  <img 
+                    className="attraction-img" 
+                    src={attraction.image} 
+                    alt={attraction.name} 
+                  />
                   <p>{attraction.name}</p>
                 </li>
               </Link>
@@ -150,7 +167,11 @@ class DestinationPage extends React.Component {
             this.state.eateryAttractions.map( (attraction) => (
               <Link key={attraction.id} to={`/attractions/${attraction.id}`}>
                 <li className="attraction-list">
-                  <img className="attraction-img" src={attraction.image} alt={attraction.name} />
+                  <img 
+                    className="attraction-img" 
+                    src={attraction.image} 
+                    alt={attraction.name} 
+                  />
                   <p>{attraction.name}</p>
                 </li>
               </Link>
@@ -194,8 +215,14 @@ class DestinationPage extends React.Component {
               ))
             }
           </div>
-            < ReactMapDestination destinationId={this.props.match.params.id}/> 
+            {/* < ReactMapDestination destinationId={this.props.match.params.id}/>  */}
 
+          <Route
+            exact path='/destinations/:id'
+            render={(props) => <ReactMapDestination destinationId={this.props.match.params.id} {...props} />} // function render props
+          />
+
+        </Router>
       </div>
       )
 

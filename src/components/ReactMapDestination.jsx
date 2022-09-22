@@ -1,5 +1,5 @@
 import React from 'react'
-// import './ReactMapDestination.css'
+import './ReactMapDestination.css'
 // Why do we need a package?
 // For a non-React page, ie a Rails template, we can just
 // use a <script> tag to load the Gmaps API and add markers

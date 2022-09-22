@@ -15,6 +15,7 @@ import Registration from './components/auth/Registration';
 import ReactMap from './components/ReactMap';
 import PlannerForm from './components/PlannerForm';
 import Button from 'react-bootstrap/Button';
+
 // import Demo from './Demo';
 
 
@@ -83,11 +84,12 @@ class App extends React.Component {
   render() {
 
     return (
+      <div className="home-page">
       <Router>
 
         <header className="home-header">
 
-          <h1> <Link to='/'>desPination</Link> </h1>
+        <h1><Link className="main-title" to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
 
           <nav className="navbar">
             {/* Show one of two nav bars depending on if the user is logged in */}
@@ -97,33 +99,35 @@ class App extends React.Component {
                 (
                   
                   <ul>
-                    <li>Welcome {this.state.currentUser.name}</li>
-                    <li><Link to='/profile'>My Profile</Link></li>
-                    <li><Link onClick={this.handleLogout} to='/'>Logout</Link></li>
-                    <li><Link to='/destinations'>Destinations</Link></li>
+                    <li className="welcome-text">Welcome {this.state.currentUser.name}</li>
+                    <li><Link className="link-font" to='/profile'>My Profile</Link></li>
+                    <li><Link className="link-font" onClick={this.handleLogout} to='/'>Logout</Link></li>
+              
                   </ul>
                 )
                 :
                 (
                   <ul>
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/registration'>Sign Up</Link></li>
-                    <li><Link to='/destinations'>Destinations</Link></li>
+                    <li><Link className="link-font" to='/login'>Login</Link></li>
+                    <li><Link className="link-font" to='/registration'>Sign Up</Link></li>
                   </ul>
                 )
             }
 
           </nav>
 
-
-          <h1> <Link to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
+          
 
 
 
 
         </header>
 
+        
+
         <Route exact path='/' component={ReactMap} />
+
+        <Route exact path='/' component={DestinationIndex} />
 
         <Route
           exact path='/login'
@@ -145,7 +149,7 @@ class App extends React.Component {
             )
         }
 
-        <Route exact path='/destinations' component={DestinationIndex} />
+        {/* <Route exact path='/destinations' component={DestinationIndex} /> */}
 
         <Route exact path='/registration' component={Registration} />
 
@@ -162,8 +166,14 @@ class App extends React.Component {
 
         {/* <Route exact path='/demo' component={Demo} /> */}
 
+        <hr />
+      <footer>
+        &copy; Too-Broke-To-Travel Pty Ltd.
+      </footer>
+
 
       </Router>
+      </div>
     )
 
   }

@@ -7,9 +7,44 @@
     width: 400px;
     height: 250px;
     object-fit: cover;
+    filter: brightness(100%);
+    transition: filter 0.2s;
+}
+
+.destination-container {
+    width: 70vw;
+    margin: 50px auto 100px;
 }
 
 .destination-list {
+    position: relative;
+    text-align: center;
     display: inline-block;
-    margin: 0 10px;
+    margin: 5px;
+}
+
+.destination-name {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18pt;
+    background-color: rgba(255, 255, 255, 0.838);
+    padding: 15px 30px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.link-styles {
+    color: black;
+}
+
+.destination-list:hover .destination-name {
+    opacity: 1;
+}
+
+.destination-list:hover .destination-img {
+    filter: brightness(50%)
 }

@@ -374,8 +374,9 @@ class ReactMap extends React.Component {
 
     return (
       <div>
-        {/* <h1 className="mapTitle">DesPination</h1> */}
-          
+
+        <h3 className="opening-text">Explore Your World Here!</h3>
+
         <div className="mapContainer">
 
           {

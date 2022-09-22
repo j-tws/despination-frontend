@@ -3,6 +3,10 @@ ul{
    list-style-type: none;
 }
 
+.home-page {
+  text-align: center;
+}
+
 
 h1{
   text-align: center;
@@ -16,23 +20,39 @@ a:link{
 }
 
 .navbar {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   text-align: center;
   margin: 0 auto;
+  background: linear-gradient(#cad8dc, #d0c5c8);
 }
 
 .navbar li {
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .navbar ul {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0 auto;
 }
 
 header h1 {
   margin: 70px;
+}
+
+.link-font {
+  color: black;
+}
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  color: black;
+  font-size: 60pt;
+}
+
+.welcome-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14pt;
 }
 
 

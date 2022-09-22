@@ -1,5 +1,5 @@
 .mapContainer {
-    width: 90vw;
+    width: 70vw;
     height: 40vw;
     margin: 0 auto; 
     
@@ -34,3 +34,8 @@
     height: 40px;
     font-size: 18pt;
 }
+
+.opening-text {
+    font-family: 'Playfair Display', serif;
+    margin: 15px;
+  }
