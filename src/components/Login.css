@@ -40,3 +40,8 @@
     background: #fdce00;
     cursor: pointer;
 }
+
+.error-message{
+    font-style: italic;
+    color: #E87F5B; 
+}
