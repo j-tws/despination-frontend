@@ -4,13 +4,14 @@ import './DestinationPage.css'
 import { Route, HashRouter as Router, Link } from 'react-router-dom'
 import AddRemoveEventForm from './AddRemoveEventForm';
 import ReactMapDestination from './ReactMapDestination';
+import Carousel from 'react-bootstrap/Carousel';
 
 
 let BASE_URL;
 if( process.env.NODE_ENV === 'development'){
   BASE_URL = 'http://localhost:3000';
 } else {
-  BASE_URL = 'http://despination.herokuapp.com';
+  BASE_URL = 'https://despination.herokuapp.com';
 }
 
 class DestinationPage extends React.Component {
@@ -129,7 +130,7 @@ class DestinationPage extends React.Component {
 
         <h2>Attractions</h2>
         <h3>Historical and Cultural</h3>
-        <ul>
+        {/* <ul>
           {
             this.state.historicalAttractions.map( (attraction) => (
               
@@ -145,7 +146,23 @@ class DestinationPage extends React.Component {
               </Link>
             ))
           }
-        </ul>
+        </ul> */}
+        <Carousel className="historical-carousel" interval={null}>
+          {
+    
+              this.state.historicalAttractions.map( (attraction) => (
+              <Carousel.Item>
+                <img 
+                  className="d-block w-100" 
+                  src={attraction.image} 
+                  alt={attraction.name} 
+                />
+              </Carousel.Item>
+            ))
+            
+          }
+        </Carousel>
+
 
         <h3>Landscape and Nature</h3>
         <ul>
