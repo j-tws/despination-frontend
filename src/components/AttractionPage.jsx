@@ -23,7 +23,7 @@ class AttractionPage extends React.Component {
     addRemoveAttractionResponse: '',
     addRemoveEventResponse: '',
 
-    likes: null,
+   
 
   }
 
@@ -56,14 +56,12 @@ class AttractionPage extends React.Component {
     try {
       const res = await axios.get(`${BASE_URL}/attractions/${id}`)
 
-      // console.log('response data:', res.data );
+      console.log('response data:', res.data );
       // console.log('attraction events:', res.data.events);
-      console.log(`attraction users:`, res.data.users.length);
-
+      const usersThatLikedAttraction = res.data.users.map(user => user.id)
       this.setState({
         attraction: res.data,
         attractionEvents: res.data.events,
-        likes: res.data.users.length
       })
     
 
@@ -163,8 +161,19 @@ class AttractionPage extends React.Component {
           alt={this.state.attraction.name} 
         />
         <div>
-          <LikeButton /> 
-          <p>{this.state.likes}</p>
+          {/* this state.current user is async, while axios is processing, give me null until the data is loaded back then give me currentUser.id */}
+          {this.state.attraction.id && this.state.currentUser
+            // Waiting for attraction & currentUser details to be loaded before the LikeButton component is rendered
+            ?
+              <LikeButton 
+                attractionId={this.props.match.params.id} 
+                userId={this.state.currentUser.id}
+                usersThatLiked={this.state.attraction.users}
+              /> 
+            :
+              "Loading..." 
+          }
+          
         </div>
 
         <p className="attraction-description">{this.state.attraction.description}</p>
