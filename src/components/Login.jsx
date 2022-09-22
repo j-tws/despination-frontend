@@ -1,7 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000'
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'http://despination.herokuapp.com';
+}
 
 class Login extends React.Component {
 
@@ -24,6 +29,9 @@ class Login extends React.Component {
                 break;
             case 'password':
                 this.setState({password: ev.target.value})
+                break;
+            default:
+            console.log("error?");
         }
 
     } // handleInput

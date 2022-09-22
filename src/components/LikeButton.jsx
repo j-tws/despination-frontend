@@ -2,7 +2,14 @@ import React from "react";
 // import Heart from "react-animated-heart"
 import axios from "axios";
 import './LikeButton.css'
-const BASE_URL = 'http://localhost:3000'
+
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'http://despination.herokuapp.com';
+}
+
 class LikeButton extends React.Component {
 
   state = {
