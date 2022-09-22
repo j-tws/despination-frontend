@@ -1,4 +1,6 @@
-.login-container label{
+
+
+.registration-container label{
     border-bottom: 3px solid rgb(228, 228, 228);
     font-family: 'Playfair Display', serif;
     font-size: 25pt;
@@ -8,18 +10,18 @@
     color: rgb(117, 116, 116);
 }
 
-.login-container form{
+.registration-container form{
     margin-bottom: 50px;
 
 }
 
-.login-container input{
+.registration-container input{
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.login-container button{
-    width: 60px;
+.registration-container button{
+    width: 80px;
     color: black;
     font-size: 18px;
     font-family: 'Playfair Display', serif;
@@ -36,12 +38,7 @@
     
 }
 
-.login-container button:hover {
+.registration-container button:hover {
     background: #fdce00;
     cursor: pointer;
-}
-
-.error-message{
-    font-style: italic;
-    color: #E87F5B; 
 }

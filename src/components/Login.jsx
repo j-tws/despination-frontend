@@ -105,6 +105,20 @@ class Login extends React.Component {
                 />
                 <br />
                 <button>Login</button>
+                { 
+                this.state.errorMessage 
+                    ?
+                    (
+                        <p className="error-message"> Uh-oh! Incorrect input! </p>
+                    )
+                    :
+                    (   
+                        <div> </div>
+                    )
+                
+                }
+
+
             </form>
         ) // return
 

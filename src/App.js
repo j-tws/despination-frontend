@@ -143,7 +143,7 @@ class App extends React.Component {
               )
               :
               (
-                <p>You need to sign up / log in to access this feature.</p>
+                <p className="signup-message">Sign up / login now to access more features!</p>
               )
           }
 
