@@ -2,8 +2,24 @@
 .notes-form {
     width: 70vw;
     margin: 0 auto 100px;
-    border: 1px solid black;
+    border: 10px solid rgb(228, 228, 228);
     padding: 20px;
 
+}
+
+.notes-form button {
+    width: 180px;
+    color: black;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: rgb(228, 228, 228);
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: 2px 3px 8px 2px  rgb(202, 202, 202);
 }
 

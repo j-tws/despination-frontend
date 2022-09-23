@@ -21,15 +21,15 @@ class EditNotes extends React.Component {
 
     return (
       <div className="notes-form">
-        textarea edit form testing
         <form onSubmit={this.handleSubmit}>
           <textarea 
             name="planner-notes" id="planner-notes" 
-            cols="30" 
+            cols="50" 
             rows="10"
             defaultValue={this.props.plannerNotes}
             onChange={this.handleNotesChange}
           />
+          <br />
 
           <button>Apply</button>
         </form>
