@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Registration.css';
 
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'https://despination.herokuapp.com';
+}
+
 
 export default class Registration extends Component {
 
@@ -12,7 +19,7 @@ export default class Registration extends Component {
         this.state = {
             email: "",
             password: "",
-            registrationErrors: ""
+            registrationErrors: null
         }
         // A placeholder for handleSubmit
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +41,7 @@ export default class Registration extends Component {
 
         console.log("Form submitted")
         // data has to be passed into as an object to be updated in the backend
-        axios.post("http://localhost:3000/users", {
+        axios.post(`${BASE_URL}/users`, {
             user: {
                 name: this.state.name,
                 email: this.state.email.toLowerCase(),
@@ -46,8 +53,10 @@ export default class Registration extends Component {
             // or else it would look like the user is not logged in
         ).then(res => {
             console.log("registration response", res.data);
+            this.props.history.push(`/login`)
         }).catch(error => {
             console.log("registration error", error);
+            this.setState({registrationErrors: error.response.data.error})
         })
 
 
@@ -88,6 +97,8 @@ export default class Registration extends Component {
                         required
                     />
                     <br />
+
+                    <p>{this.state.registrationErrors}</p>
 
                     <button type="submit"> Register </button>
 

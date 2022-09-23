@@ -14,15 +14,15 @@ class AddRemoveEventForm extends React.Component {
   }
 
   handleAddEventSubmit = (ev) => {
-    console.log('button clicked!');
-    console.log('planner selected:', this.state.selectedPlannerId);
+    // console.log('button clicked!');
+    // console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
     this.props.addEvent(this.state.selectedPlannerId, this.props.eventId)
   }
 
   handleRemoveEventSubmit = (ev) => {
-    console.log('button clicked!');
-    console.log('planner selected:', this.state.selectedPlannerId);
+    // console.log('button clicked!');
+    // console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
     this.props.removeEvent(this.state.selectedPlannerId, this.props.eventId)
   }

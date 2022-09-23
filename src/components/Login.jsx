@@ -9,6 +9,8 @@ if( process.env.NODE_ENV === 'development'){
   BASE_URL = 'https://despination.herokuapp.com';
 }
 
+console.log(`process.env.NODE_EMV:`, process.env.NODE_ENV);
+
 class Login extends React.Component {
 
     // The state this time needs to hold the email and password we're going to submit
