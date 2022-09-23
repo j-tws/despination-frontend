@@ -12,7 +12,7 @@ export default class Registration extends Component {
         this.state = {
             email: "",
             password: "",
-            registrationErrors: ""
+            registrationErrors: null
         }
         // A placeholder for handleSubmit
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,8 +46,10 @@ export default class Registration extends Component {
             // or else it would look like the user is not logged in
         ).then(res => {
             console.log("registration response", res.data);
+            this.props.history.push(`/login`)
         }).catch(error => {
             console.log("registration error", error);
+            this.setState({registrationErrors: error.response.data.error})
         })
 
 
@@ -88,6 +90,8 @@ export default class Registration extends Component {
                         required
                     />
                     <br />
+
+                    <p>{this.state.registrationErrors}</p>
 
                     <button type="submit"> Register </button>
 

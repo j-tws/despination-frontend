@@ -33,11 +33,15 @@ class AddRemoveAttractionForm extends React.Component {
       <div>
         <form>
           <label>Choose planner to add:</label>
-          <select className="attraction-select" name="planners">
+          <select 
+            className="attraction-select" 
+            onClick={this.handleChange}
+            name="planners"
+          >
             <option selected disabled>Select planner</option>
             {
               this.props.userPlanners.map( (planner) => (
-                <option value={planner.id} onClick={this.handleChange}>{planner.name}</option>
+                <option value={planner.id} >{planner.name}</option>
               ))
             }
           </select>
