@@ -27,7 +27,7 @@ class AttractionPage extends React.Component {
     addRemoveAttractionResponse: '',
     addRemoveEventResponse: '',
 
-   
+    
 
   }
 
@@ -177,7 +177,7 @@ class AttractionPage extends React.Component {
                 usersThatLiked={this.state.attraction.users}
               /> 
             :
-              "Loading..." 
+              <div></div> 
           }
           
         </div>

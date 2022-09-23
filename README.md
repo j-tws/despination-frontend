@@ -74,7 +74,21 @@ password: chicken
 > * enforce strong password for sign up
 > * calendar to show the events for trip planning
 
+### Snippets 
+React google map displaying linked attractions and a snippet of an event.
+![](./public/google_map_with_attractions.png)
 
+Destination index at home page
+![](./public/destination_index.png)
+
+Attractions displayed using carousel
+![](./public/attractions_carousel.png)
+
+Attraction page header with like feature shown
+![](./public/attraction_page_with_like_feature.png)
+
+Planner create form at profile page
+![](./public/create_planner_form.png)
 
 
 ---
