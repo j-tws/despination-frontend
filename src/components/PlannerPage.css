@@ -30,7 +30,7 @@ p{
 .planner-notes {
     width: 70vw;
     margin: 0 auto 100px;
-    border: 1px solid black;
+    border: 10px solid rgb(228, 228, 228);
     padding: 20px;
 }
 
