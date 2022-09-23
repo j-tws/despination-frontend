@@ -157,14 +157,14 @@ class AttractionPage extends React.Component {
       
     return(
       <div className="attraction-page">
-
-        <img 
-          className="attraction-main-img" 
-          src={this.state.attraction.image} 
-          alt={this.state.attraction.name} 
-          />
-
-        <h1>{this.state.attraction.name}</h1>
+        <div className="attraction-header">
+          <img 
+            className="attraction-main-img" 
+            src={this.state.attraction.image} 
+            alt={this.state.attraction.name} 
+            />
+          <h1>{this.state.attraction.name}</h1>
+        </div>
 
         <div>
           {/* this state.current user is async, while axios is processing, give me null until the data is loaded back then give me currentUser.id */}

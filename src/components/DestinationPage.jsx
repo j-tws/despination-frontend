@@ -119,14 +119,17 @@ class DestinationPage extends React.Component {
         <Router>
           
         
-
-        <img 
-          src={this.state.destination.image} 
-          alt={`${this.state.destination.name}`} className="main-image"
+        <div className="destination-header">
+          <img 
+            src={this.state.destination.image} 
+            alt={`${this.state.destination.name}`} className="main-image"
           />
-          <h1>{this.state.destination.name}</h1>
+            <h1>{this.state.destination.name}</h1>
+        </div>
+            <p className="destination-description"> 
+                {this.state.destination.description}
+            </p>
 
-        <p className="destination-description">"{this.state.destination.description}"</p>
 
         <h2>Attractions</h2>
         <h3>Historical and Cultural</h3>
@@ -209,6 +212,7 @@ class DestinationPage extends React.Component {
 
         <h2>All events happening in this city</h2>
           <div className="destination-event-grid">
+            <p>{this.state.addRemoveEventResponse}</p>
             {
               this.state.allEvents.map( (event) => (
                 <div key={event.id} className="destination-event-box">
@@ -233,7 +237,7 @@ class DestinationPage extends React.Component {
                             removeEvent={this.deleteEvent}
                         
                           />
-                          <p>{this.state.addRemoveEventResponse}</p>
+                          
                         </div>
                       )
                       :

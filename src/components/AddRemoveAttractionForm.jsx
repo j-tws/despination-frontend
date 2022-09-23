@@ -45,7 +45,8 @@ class AddRemoveAttractionForm extends React.Component {
               ))
             }
           </select>
-
+          
+          
           <button className="attraction-button" onClick={this.handleAddAttractionSubmit}>Add attraction</button>
           <button className="attraction-button" onClick={this.handleRemoveAttractionSubmit}>Remove attraction</button>
 

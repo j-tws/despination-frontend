@@ -6,17 +6,20 @@ class AddRemoveEventForm extends React.Component {
 
   state = {
     selectedPlannerId: null,
+
   }
 
   handleChange = (ev) => {
     console.log('selected value:', ev.target.value);
     this.setState({selectedPlannerId: ev.target.value})
+    
   }
 
   handleAddEventSubmit = (ev) => {
     // console.log('button clicked!');
     // console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
+
     this.props.addEvent(this.state.selectedPlannerId, this.props.eventId)
   }
 
@@ -24,8 +27,18 @@ class AddRemoveEventForm extends React.Component {
     // console.log('button clicked!');
     // console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
+
     this.props.removeEvent(this.state.selectedPlannerId, this.props.eventId)
   }
+
+  // checkCurrentPlannerEvent = (eventId, plannerEvents) => {
+  //     const plannerEventsId = plannerEvents.map( event => event.id)
+
+  //     console.log(eventId, plannerEventsId);
+  //     console.log(plannerEventsId.includes( parseInt(eventId) ))
+
+  //     return plannerEventsId.includes( parseInt(eventId) )
+  // }
 
   render() {
 
@@ -41,9 +54,10 @@ class AddRemoveEventForm extends React.Component {
               ))
             }
           </select>
+            
+              <button className="event-button" onClick={this.handleAddEventSubmit}>Add Event</button>
 
-          <button className="event-button" onClick={this.handleAddEventSubmit}>Add Event</button>
-          <button className="event-button" onClick={this.handleRemoveEventSubmit}>Remove Event</button>
+              <button className="event-button" onClick={this.handleRemoveEventSubmit}>Remove Event</button>
 
         </form>
       </div>

@@ -5,8 +5,13 @@
 .attraction-main-img {
     width: 100vw;
     height: 40vw;
+    max-height: 700px;
     object-fit: cover;
     margin: 10px auto;
+}
+
+.attraction-header {
+    position: relative;
 }
 
 .attraction-description {
@@ -16,12 +21,17 @@
 }
 
 .attraction-page h1 {
-    border: 10px solid rgb(228, 228, 228);
+    border: 10px solid rgb(175, 175, 175);
     font-family: 'Playfair Display', serif;
     font-size: 38pt;
     padding: 10px 10px;
     margin: 30px auto;
-    width: 500px;
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.814);
 
 }
 
@@ -35,7 +45,6 @@
 
 .attraction-response {
     margin: 15px;
-
 }
 
 .attraction-events h2 {
