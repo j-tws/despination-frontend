@@ -34,6 +34,7 @@ a.main-title:hover{
   text-align: center;
   margin: 0 auto;
   background: linear-gradient(#cad8dc, #d0c5c8);
+  
 }
 
 .navbar li {
@@ -49,8 +50,15 @@ a.main-title:hover{
   margin: 0 auto;
 }
 
+header{
+  background-image: url("https://res.cloudinary.com/dwmvmdhlu/image/upload/v1663897221/DesPination/0f710bb81c2ff1aff8976239c18acfd2_tnhuw8.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% auto;
+}
+
 header h1 {
-  margin: 70px;
+  padding: 35px;
 }
 
 .link-font {

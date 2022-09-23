@@ -14,15 +14,15 @@ class AddRemoveAttractionForm extends React.Component {
   }
 
   handleAddAttractionSubmit = (ev) => {
-    // console.log('button clicked!');
-    // console.log('planner selected:', this.state.selectedPlannerId);
+    console.log('button clicked!');
+    console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
     this.props.addAttraction(this.state.selectedPlannerId)
   }
 
   handleRemoveAttractionSubmit = (ev) => {
-    // console.log('button clicked!');
-    // console.log('planner selected:', this.state.selectedPlannerId);
+    console.log('button clicked!');
+    console.log('planner selected:', this.state.selectedPlannerId);
     ev.preventDefault()
     this.props.removeAttraction(this.state.selectedPlannerId)
   }
