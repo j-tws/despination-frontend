@@ -84,7 +84,6 @@ class App extends React.Component {
     return (
       <div className="home-page">
         <Router>
-
           <header className="home-header">
 
             <h1><Link className="main-title" to='/'><em>des</em>Pin<em>ation</em></Link> </h1>
@@ -111,17 +110,8 @@ class App extends React.Component {
                     </ul>
                   )
               }
-
             </nav>
-
-
-
-
-
-
           </header>
-
-
 
           <Route exact path='/' component={ReactMap} />
 

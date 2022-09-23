@@ -81,14 +81,14 @@ class AttractionPage extends React.Component {
     try {
   
       const res = await axios.post(`${BASE_URL}/planners/${plannerId}/add_attraction/${this.props.match.params.id}`)
-      // console.log(`Post response:`, res.data);
+      console.log(`Post response:`, res.data);
 
       this.setState({addRemoveAttractionResponse: res.data.response})
       
     } catch( err ){
 
-      // console.log('error message:', err);
-      // console.log('error message:', err.response.data.error);
+      console.log('error message:', err);
+      console.log('error message:', err.response.data.error);
       
       this.setState({addRemoveAttractionResponse: err.response.data.error})
 
@@ -102,14 +102,14 @@ class AttractionPage extends React.Component {
     try {
   
       const res = await axios.delete(`${BASE_URL}/planners/${plannerId}/remove_attraction/${this.props.match.params.id}`)
-      // console.log(`Delete response:`, res.data);
+      console.log(`Delete response:`, res.data);
 
       this.setState({addRemoveAttractionResponse: res.data.response})
       
     } catch( err ){
 
-      // console.log('error message:', err);
-      // console.log('error message:', err.response.data.error);
+      console.log('error message:', err);
+      console.log('error message:', err.response.data.error);
       
       this.setState({addRemoveAttractionResponse: err.response.data.error})
 
