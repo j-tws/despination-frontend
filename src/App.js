@@ -16,8 +16,12 @@ import ReactMap from './components/ReactMap';
 
 // import Demo from './Demo';
 
-
-const BASE_URL = 'http://localhost:3000'
+let BASE_URL;
+if( process.env.NODE_ENV === 'development'){
+  BASE_URL = 'http://localhost:3000';
+} else {
+  BASE_URL = 'https://despination.herokuapp.com';
+}
 
 class App extends React.Component {
 
