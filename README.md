@@ -8,7 +8,7 @@ link to our webpage - [DesPination](https://despination.netlify.app/)
 
 ### DesPination
 
-Our third project at General Assembly is a group project. After being taught React front-end frameworks for 2 days, our team decided to challenge ourselves to work with React and Ruby on Rails as both as our front-end and back-end frameworks. 
+Our third project at General Assembly is a group project. After being taught React front-end frameworks for 2 days, our team decided to challenge ourselves to work with React and Ruby on Rails as both as our front-end and back-end frameworks. It's time to show you what our team of two have learned in the past 8 weeks! 
 
 This destination planner app is the reflection of our passion for travelling. We have gathered some of the major cities that we would like to visit one day! Thank God for end of Covid restrictions ❤️  Enjoy browsing through our app!
 
